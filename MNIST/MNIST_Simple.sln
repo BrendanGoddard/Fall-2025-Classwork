@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36109.1 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "MNIST_Simple", "MNIST_Simple\MNIST_Simple.pyproj", "{0DA4D384-84B3-4B9D-8128-16A77F0FE23C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DA4D384-84B3-4B9D-8128-16A77F0FE23C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA4D384-84B3-4B9D-8128-16A77F0FE23C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A23858C-85A1-402D-A053-2EFB2CAC1CCF}
+	EndGlobalSection
+EndGlobal

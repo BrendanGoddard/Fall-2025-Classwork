@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\bjgod\\Desktop\\2025-Course Work\\3142 - Emerging Technologies\\MNIST\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0DA4D384-84B3-4B9D-8128-16A77F0FE23C}|MNIST_Simple\\MNIST_Simple.pyproj|C:\\Users\\bjgod\\Desktop\\2025-Course Work\\3142 - Emerging Technologies\\MNIST\\MNIST_Simple\\MNIST_PyTorch.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0DA4D384-84B3-4B9D-8128-16A77F0FE23C}|MNIST_Simple\\MNIST_Simple.pyproj|solutionrelative:MNIST_Simple\\MNIST_PyTorch.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MNIST_PyTorch.py",
+              "DocumentMoniker": "C:\\Users\\bjgod\\Desktop\\2025-Course Work\\3142 - Emerging Technologies\\MNIST\\MNIST_Simple\\MNIST_PyTorch.py",
+              "RelativeDocumentMoniker": "MNIST_Simple\\MNIST_PyTorch.py",
+              "ToolTip": "C:\\Users\\bjgod\\Desktop\\2025-Course Work\\3142 - Emerging Technologies\\MNIST\\MNIST_Simple\\MNIST_PyTorch.py",
+              "RelativeToolTip": "MNIST_Simple\\MNIST_PyTorch.py",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-05-16T18:01:46.126Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
