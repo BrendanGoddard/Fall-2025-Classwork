@@ -1,0 +1,418 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter03.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter03.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\json_download.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\json_download.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\json_gpt5.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\json_gpt5.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter15.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter15.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter18.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter18.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter22.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter22.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter04.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter04.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter08.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter08.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter07.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter07.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter06.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter06.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter13.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter13.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter09.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter09.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter14.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter14.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter17.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter17.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter12.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\chapter12.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\color_module.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\color_module.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\circle_cm.py||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\circle_cm.py||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\cs.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\cs.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\circle.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\circle.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\practice2.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\practice2.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\practice.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\practice.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\modtest.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\modtest.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\mymath.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\mymath.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\scopetest.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{388151EE-D7A6-49DD-B8C6-E6A0A35EEBC4}|QPB_00-14\\QPB_00-14.pyproj|solutionrelative:QPB_00-14\\scopetest.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "json_gpt5.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\json_gpt5.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\json_gpt5.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\json_gpt5.py",
+              "RelativeToolTip": "QPB_00-14\\json_gpt5.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-08-20T14:54:03.959Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "json_download.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\json_download.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\json_download.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\json_download.py",
+              "RelativeToolTip": "QPB_00-14\\json_download.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-08-20T14:47:04.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "chapter03.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter03.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter03.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter03.py",
+              "RelativeToolTip": "QPB_00-14\\chapter03.py",
+              "ViewState": "AgIAAA0BAAAAAAAAAAAlwCABAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-08-13T15:34:59.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "chapter15.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter15.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter15.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter15.py",
+              "RelativeToolTip": "QPB_00-14\\chapter15.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "chapter14.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter14.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter14.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter14.py",
+              "RelativeToolTip": "QPB_00-14\\chapter14.py",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAAAHcAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "chapter09.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter09.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter09.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter09.py",
+              "RelativeToolTip": "QPB_00-14\\chapter09.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "chapter22.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter22.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter22.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter22.py",
+              "RelativeToolTip": "QPB_00-14\\chapter22.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "chapter18.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter18.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter18.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter18.py",
+              "RelativeToolTip": "QPB_00-14\\chapter18.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.426Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "chapter13.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter13.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter13.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter13.py",
+              "RelativeToolTip": "QPB_00-14\\chapter13.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.686Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "chapter07.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter07.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter07.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter07.py",
+              "RelativeToolTip": "QPB_00-14\\chapter07.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:51:19.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "chapter12.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter12.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter12.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter12.py",
+              "RelativeToolTip": "QPB_00-14\\chapter12.py",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAF8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "chapter08.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter08.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter08.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter08.py",
+              "RelativeToolTip": "QPB_00-14\\chapter08.py",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAEUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "chapter04.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter04.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter04.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter04.py",
+              "RelativeToolTip": "QPB_00-14\\chapter04.py",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAAG4AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "chapter06.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter06.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter06.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter06.py",
+              "RelativeToolTip": "QPB_00-14\\chapter06.py",
+              "ViewState": "AgIAAPcAAAAAAAAAAAAIwP4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:29.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "chapter17.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter17.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\chapter17.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\chapter17.py",
+              "RelativeToolTip": "QPB_00-14\\chapter17.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "circle_cm.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\circle_cm.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\circle_cm.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\circle_cm.py",
+              "RelativeToolTip": "QPB_00-14\\circle_cm.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAArwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.751Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "circle.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\circle.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\circle.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\circle.py",
+              "RelativeToolTip": "QPB_00-14\\circle.py",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.752Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "cs.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\cs.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\cs.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\cs.py",
+              "RelativeToolTip": "QPB_00-14\\cs.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.752Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "color_module.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\color_module.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\color_module.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\color_module.py",
+              "RelativeToolTip": "QPB_00-14\\color_module.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "practice2.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\practice2.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\practice2.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\practice2.py",
+              "RelativeToolTip": "QPB_00-14\\practice2.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "scopetest.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\scopetest.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\scopetest.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\scopetest.py",
+              "RelativeToolTip": "QPB_00-14\\scopetest.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "modtest.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\modtest.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\modtest.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\modtest.py",
+              "RelativeToolTip": "QPB_00-14\\modtest.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "mymath.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\mymath.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\mymath.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\mymath.py",
+              "RelativeToolTip": "QPB_00-14\\mymath.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "practice.py",
+              "DocumentMoniker": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\practice.py",
+              "RelativeDocumentMoniker": "QPB_00-14\\practice.py",
+              "ToolTip": "C:\\Projects\\Fan\\0INFO3142\\Master\\Week2\\Python\\Python_Examples\\QPB_00-14\\practice.py",
+              "RelativeToolTip": "QPB_00-14\\practice.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-01-18T11:33:14.756Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
