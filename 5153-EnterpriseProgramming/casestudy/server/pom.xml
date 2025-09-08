@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>info5153.casestudy</groupId>
 	<artifactId>server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1165646-CASESTUDY</version>
 	<name>server</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
