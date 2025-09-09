@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ReviewOfAndroid2</string>
+    <string name="hello_world">Hello World Brendan</string>
+    <string name="name">Please enter name here:</string>
+    <string name="label">Display all info in logcat</string>
+    <string name="one">one</string>
+    <string name="two">two</string>
+    <string name="three">three</string>
+</resources>
