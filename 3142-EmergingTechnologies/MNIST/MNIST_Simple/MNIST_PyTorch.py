@@ -12,7 +12,7 @@ print(device)
 input_size = 28 * 28          # Size of input images (28x28 pixels, flattened)
 hidden_size = 128             # Number of neurons in the hidden layer
 num_classes = 10              # Digits 0 through 9
-num_epochs = 5                # Number of training epochs
+num_epochs = 40                # Number of training epochs
 batch_size = 64               # Number of samples per training batch
 learning_rate = 0.01          # Learning rate for optimizer
 
