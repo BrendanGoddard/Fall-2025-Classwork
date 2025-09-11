@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-title align="center" style="margin: 1rem">Employees</mat-card-title>
+  <mat-card-content>
+    <mat-list dense>
+      @for (employee of employees(); track $index) {
+      <mat-list-item>
+        {{ employee.id }} - {{ employee.firstName }}, {{ employee.lastName }}
+      </mat-list-item>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>
