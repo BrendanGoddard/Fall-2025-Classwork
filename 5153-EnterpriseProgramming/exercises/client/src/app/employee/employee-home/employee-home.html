@@ -1,12 +1,19 @@
 <mat-card>
-  <mat-card-title align="center" style="margin: 1rem">Employees</mat-card-title>
   <mat-card-content>
+    @if (hasEmployeeSelected()) {
+    <mat-card-title align="center" style="margin: 1rem">Employee Details</mat-card-title>
+    <!-- <app-employee-details [employee]="employeeInDetail()" /> -->
+    <app-employee-details [employee]="employeeInDetail()" (saved)="updateEmployee($event)" (closed)="refresh()"/>
+
+    } @else {
+    <mat-card-title align="center" style="margin: 1rem">Employees</mat-card-title>
     <mat-list dense>
       @for (employee of employees(); track $index) {
-      <mat-list-item>
+      <mat-list-item (click)="selectEmployee(employee)">
         {{ employee.id }} - {{ employee.firstName }}, {{ employee.lastName }}
       </mat-list-item>
       }
     </mat-list>
+    }
   </mat-card-content>
 </mat-card>

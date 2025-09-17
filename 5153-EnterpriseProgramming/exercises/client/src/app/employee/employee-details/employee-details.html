@@ -1,0 +1,38 @@
+<form [formGroup]="employeeForm">
+  <div style="display: flex">
+    <mat-form-field style="width: 90%; margin: auto">
+      <mat-label>Title</mat-label>
+      <input matInput type="text" maxlength="4" required formControlName="title" autofocus />
+    </mat-form-field>
+  </div>
+  <div style="display: flex">
+    <mat-form-field style="width: 90%; margin: auto">
+      <mat-label>First Name</mat-label>
+      <input matInput type="text" required formControlName="firstName" />
+    </mat-form-field>
+  </div>
+  <div style="display: flex">
+    <mat-form-field style="width: 90%; margin: auto">
+      <mat-label>Last Name</mat-label>
+      <input matInput type="text" required formControlName="lastName" />
+    </mat-form-field>
+  </div>
+  <div style="display: flex">
+    <mat-form-field style="width: 90%; margin: auto">
+      <mat-label>Phone</mat-label>
+      <input matInput type="text" required formControlName="phone" />
+    </mat-form-field>
+  </div>
+  <div style="display: flex">
+    <mat-form-field style="width: 90%; margin: auto">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" required formControlName="email" />
+    </mat-form-field>
+  </div>
+
+  <div style="display: flex; width: 90%; margin: auto">
+    <button mat-raised-button type="button" style="color: green;" (click)="saved.emit(employeeForm.value)" >Save</button>
+    <span style="flex: 1 1 auto"></span>
+    <button mat-raised-button type="button" style="color: maroon;" (click)="closed.emit()">Close</button>
+  </div>
+</form>

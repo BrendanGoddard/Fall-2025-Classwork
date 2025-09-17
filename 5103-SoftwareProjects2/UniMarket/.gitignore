@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Vite / React / Build outputs
+dist/
+client/dist/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+client/.env
+server/.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Optional: npm / lockfiles if you want clean installs
+# package-lock.json
+# yarn.lock
