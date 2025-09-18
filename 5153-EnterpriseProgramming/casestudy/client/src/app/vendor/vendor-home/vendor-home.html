@@ -1,12 +1,19 @@
 <mat-card>
-  <mat-card-title align="center" style="margin: 1rem">Vendors</mat-card-title>
   <mat-card-content>
+    @if (hasVendorSelected()) {
+    <mat-card-title align="center" style="margin: 1rem">Vendor Details</mat-card-title>
+    <!-- <app-employee-details [employee]="employeeInDetail()" /> -->
+    <app-vendor-details [vendor]="vendorInDetail()" (saved)="updateVendor($event)" (closed)="refresh()"/>
+
+    } @else {
+    <mat-card-title align="center" style="margin: 1rem">Employees</mat-card-title>
     <mat-list dense>
       @for (vendor of vendors(); track $index) {
-      <mat-list-item>
-        {{ vendor.id }} - {{ vendor.name}}
+      <mat-list-item (click)="selectVendor(vendor)">
+        {{ vendor.id }} - {{ vendor.name }}
       </mat-list-item>
       }
     </mat-list>
+    }
   </mat-card-content>
 </mat-card>
