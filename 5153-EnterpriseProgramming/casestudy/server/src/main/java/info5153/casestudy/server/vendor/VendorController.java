@@ -4,11 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
 
 
 
@@ -31,5 +26,15 @@ public class VendorController {
         return new ResponseEntity<Vendor>(updatedVendor, HttpStatus.OK);
     }
     
+    @DeleteMapping("/api/vendors/{id}")
+    public ResponseEntity<Integer> deleteOne(@PathVariable long id) {
+        int deletedCount = vendorRepository.deleteOne(id);
+        return new ResponseEntity<Integer>(deletedCount, HttpStatus.OK);
+    }
 
+    @PostMapping("/api/vendors")
+    public ResponseEntity<Vendor> createOne(@RequestBody Vendor vendor) {
+        Vendor newVendor = vendorRepository.save(vendor);
+        return new ResponseEntity<Vendor>(newVendor, HttpStatus.OK);
+    }
 }

@@ -23,4 +23,12 @@ export class VendorService {
     return this.http.put<Vendor>(`http://localhost:8080/api/vendors`, vendor);
   }
 
+  deleteVendor(id: number): Observable<number> {
+    return this.http.delete<number>(`http://localhost:8080/api/vendors/${id}`);
+  }
+
+  createVendor(vendor: Vendor): Observable<Vendor> {
+    return this.http.post<Vendor>(`http://localhost:8080/api/vendors`, vendor);
+  }
+
 }
