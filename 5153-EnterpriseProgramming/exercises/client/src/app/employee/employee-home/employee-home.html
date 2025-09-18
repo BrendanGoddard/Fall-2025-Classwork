@@ -3,7 +3,7 @@
     @if (hasEmployeeSelected()) {
     <mat-card-title align="center" style="margin: 1rem">Employee Details</mat-card-title>
     <!-- <app-employee-details [employee]="employeeInDetail()" /> -->
-    <app-employee-details [employee]="employeeInDetail()" (saved)="updateEmployee($event)" (closed)="refresh()"/>
+    <app-employee-details [employee]="employeeInDetail()" (saved)="updateEmployee($event)" (deleted)="deleteEmployee($event)" (closed)="refresh()"/>
 
     } @else {
     <mat-card-title align="center" style="margin: 1rem">Employees</mat-card-title>

@@ -55,4 +55,12 @@ export class EmployeeHome implements OnInit {
       complete: () => this.refresh()
     });
   }
+
+  deleteEmployee(id: number) {
+    this.employeeService.deleteEmployee(id).subscribe({
+      next: (payload: number) => console.log(`${payload} deleted`),
+      error: (e: Error) => console.error(e),
+      complete: () => this.refresh()
+    });
+  }
 }

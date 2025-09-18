@@ -19,7 +19,11 @@ export class EmployeeService {
     return this.http.get<Employee[]>(`http://localhost:8080/api/employees`);
   }
 
-   updateEmployee(employee: Employee): Observable<Employee> {
+  updateEmployee(employee: Employee): Observable<Employee> {
     return this.http.put<Employee>(`http://localhost:8080/api/employees`, employee);
+  }
+
+  deleteEmployee(id: number): Observable<number> {
+    return this.http.delete<number>(`http://localhost:8080/api/employees/${id}`);
   }
 }

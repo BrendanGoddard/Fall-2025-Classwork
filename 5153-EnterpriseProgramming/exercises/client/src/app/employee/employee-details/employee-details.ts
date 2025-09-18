@@ -22,6 +22,8 @@ export class EmployeeDetails implements OnInit {
 
   saved = output<Employee>();
   closed = output<void>();
+  deleted = output<number>();
+
 
   employeeForm: FormGroup = new FormGroup({
     id: new FormControl(),

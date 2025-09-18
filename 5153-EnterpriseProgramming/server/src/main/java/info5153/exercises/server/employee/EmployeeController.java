@@ -23,4 +23,12 @@ public class EmployeeController {
         Employee updatedEmployee = employeeRepository.save(employee);
         return new ResponseEntity<Employee>(updatedEmployee, HttpStatus.OK);
     }
+
+    @DeleteMapping("/api/employees/{id}")
+    public ResponseEntity<Integer> deleteOne(@PathVariable long id) {
+        int deletedCount = employeeRepository.deleteOne(id);
+        return new ResponseEntity<Integer>(deletedCount, HttpStatus.OK);
+    }
+
 }
+
