@@ -3,35 +3,63 @@
     <mat-form-field style="width: 90%; margin: auto">
       <mat-label>Title</mat-label>
       <input matInput type="text" maxlength="4" required formControlName="title" autofocus />
+
+      @if (employeeForm.get('title')?.hasError('required')) {
+      <mat-error>Title is required</mat-error>
+      }
+
     </mat-form-field>
   </div>
   <div style="display: flex">
     <mat-form-field style="width: 90%; margin: auto">
       <mat-label>First Name</mat-label>
       <input matInput type="text" required formControlName="firstName" />
+
+      @if (employeeForm.get('firstName')?.hasError('required')) {
+      <mat-error>First name is required</mat-error>
+      }
+
     </mat-form-field>
   </div>
   <div style="display: flex">
     <mat-form-field style="width: 90%; margin: auto">
       <mat-label>Last Name</mat-label>
       <input matInput type="text" required formControlName="lastName" />
+
+      @if (employeeForm.get('lastName')?.hasError('required')) {
+      <mat-error>Last name is required</mat-error>
+      }
+
     </mat-form-field>
   </div>
   <div style="display: flex">
     <mat-form-field style="width: 90%; margin: auto">
       <mat-label>Phone</mat-label>
       <input matInput type="text" required formControlName="phone" />
+
+      @if (employeeForm.get('phone')?.hasError('required')) {
+      <mat-error>Phone is required</mat-error>
+      } @if (employeeForm.get('phone')?.hasError('invalidPhone')) {
+      <mat-error>Format: ###-###-####</mat-error>
+      }
+
     </mat-form-field>
   </div>
   <div style="display: flex">
     <mat-form-field style="width: 90%; margin: auto">
       <mat-label>Email</mat-label>
       <input matInput type="email" required formControlName="email" />
+
+      @if (employeeForm.get('email')?.hasError('required')) {
+      <mat-error>Email is required</mat-error>
+      } @if (employeeForm.get('email')?.hasError('email')) {
+      <mat-error>Format: a@b.c</mat-error>
+      }
     </mat-form-field>
   </div>
 
-  <div style="display: flex; width: 90%; margin: auto">
-    <button mat-raised-button type="button" style="color: green;" (click)="saved.emit(employeeForm.value)" >Save</button>
+  <div style="display: flex; width: 90%; margin: auto; margin-top: 1em">
+    <button mat-raised-button type="button" style="color: green;" (click)="saved.emit(employeeForm.value)" [disabled]="!employeeForm.valid">Save</button>
     <span style="flex: 1 1 auto"></span>
     <button mat-raised-button type="button" style="color: red;" (click)="deleted.emit(employee().id)">Delete</button>
     <span style="flex: 1 1 auto"></span>
