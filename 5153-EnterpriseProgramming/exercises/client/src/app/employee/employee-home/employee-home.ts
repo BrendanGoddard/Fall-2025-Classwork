@@ -3,10 +3,10 @@ import { Component, OnInit, WritableSignal, signal } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { Employee } from '../employee';
-import { EmployeeService } from '../employee.service';
-import { EmployeeDetails } from '../employee-details/employee-details';
-import { EMPLOYEE_DEFAULT } from '../../constants'
+import { Employee } from '@app/employee/employee';
+import { EmployeeService } from '@app/employee/employee.service';
+import { EmployeeDetails } from '@app/employee/employee-details/employee-details';
+import { EMPLOYEE_DEFAULT } from '@app/constants'
 
 @Component({
   selector: 'app-employee-home',
