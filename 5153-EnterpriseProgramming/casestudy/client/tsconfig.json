@@ -11,6 +11,10 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "experimentalDecorators": true,
+    "baseUrl": "./",
+    "paths": {
+      "@app/*": ["src/app/*"]
+    },
     "importHelpers": true,
     "target": "ES2022",
     "module": "preserve"

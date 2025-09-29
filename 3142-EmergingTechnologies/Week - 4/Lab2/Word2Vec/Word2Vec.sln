@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Word2Vec", "Word2Vec\Word2Vec.pyproj", "{A0240FE5-28FE-4272-B549-D417E6B30E74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0240FE5-28FE-4272-B549-D417E6B30E74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0240FE5-28FE-4272-B549-D417E6B30E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {666463AB-4115-443F-8944-A2671C1FAA2C}
+	EndGlobalSection
+EndGlobal

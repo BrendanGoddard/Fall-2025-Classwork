@@ -7,12 +7,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 
-import { Vendor } from '../vendor';
-import { VENDOR_DEFAULT } from '../../constants';
+import { Vendor } from '@app/vendor/vendor';
+import { VENDOR_DEFAULT } from '@app/constants';
 
 import { MatButtonModule } from '@angular/material/button';
-import { ValidatePhone } from '../../validators/phone.validators';
-import { ValidatePostalCode } from '../../validators/postalcode.validators';
+import { ValidatePhone } from '@app/validators/phone.validators';
+import { ValidatePostalCode } from '@app/validators/postalcode.validators';
 
 @Component({
   selector: 'app-vendor-details',

@@ -28,7 +28,7 @@ export class EmployeeHome implements OnInit {
   }
 
   refresh(): void {
-    this.employeeService.getEmployees().subscribe({
+    this.employeeService.getAll().subscribe({
       next: (payload: Employee[]) => {
         console.log(payload);
         this.employees.set(payload);
@@ -52,7 +52,7 @@ export class EmployeeHome implements OnInit {
   }
 
     updateEmployee(employee: Employee) {
-    this.employeeService.updateEmployee(employee).subscribe({
+    this.employeeService.update(employee).subscribe({
       next: (payload: Employee) => {
         console.log(payload);
         this.employeeInDetail.set(payload);
@@ -63,7 +63,7 @@ export class EmployeeHome implements OnInit {
   }
 
   deleteEmployee(id: number) {
-    this.employeeService.deleteEmployee(id).subscribe({
+    this.employeeService.delete(id).subscribe({
       next: (payload: number) => console.log(`${payload} deleted`),
       error: (e: Error) => console.error(e),
       complete: () => this.refresh()
@@ -71,7 +71,7 @@ export class EmployeeHome implements OnInit {
   }
 
   createEmployee(employee: Employee) {
-    this.employeeService.createEmployee(employee).subscribe({
+    this.employeeService.create(employee).subscribe({
       next: (payload: Employee) => console.log(payload),
       error: (e: Error) => console.error(e),
       complete: () => this.refresh()

@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A0240FE5-28FE-4272-B549-D417E6B30E74}|Word2Vec\\Word2Vec.pyproj|C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Compare.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A0240FE5-28FE-4272-B549-D417E6B30E74}|Word2Vec\\Word2Vec.pyproj|solutionrelative:Word2Vec\\Word2Vec_Compare.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0240FE5-28FE-4272-B549-D417E6B30E74}|Word2Vec\\Word2Vec.pyproj|C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Native1.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A0240FE5-28FE-4272-B549-D417E6B30E74}|Word2Vec\\Word2Vec.pyproj|solutionrelative:Word2Vec\\Word2Vec_Native1.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0240FE5-28FE-4272-B549-D417E6B30E74}|Word2Vec\\Word2Vec.pyproj|C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A0240FE5-28FE-4272-B549-D417E6B30E74}|Word2Vec\\Word2Vec.pyproj|solutionrelative:Word2Vec\\Word2Vec.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0240FE5-28FE-4272-B549-D417E6B30E74}|Word2Vec\\Word2Vec.pyproj|C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Optimized.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A0240FE5-28FE-4272-B549-D417E6B30E74}|Word2Vec\\Word2Vec.pyproj|solutionrelative:Word2Vec\\Word2Vec_Optimized.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0240FE5-28FE-4272-B549-D417E6B30E74}|Word2Vec\\Word2Vec.pyproj|C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Native2.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A0240FE5-28FE-4272-B549-D417E6B30E74}|Word2Vec\\Word2Vec.pyproj|solutionrelative:Word2Vec\\Word2Vec_Native2.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0240FE5-28FE-4272-B549-D417E6B30E74}|Word2Vec\\Word2Vec.pyproj|C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Native3.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A0240FE5-28FE-4272-B549-D417E6B30E74}|Word2Vec\\Word2Vec.pyproj|solutionrelative:Word2Vec\\Word2Vec_Native3.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Word2Vec_Compare.py",
+              "DocumentMoniker": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Compare.py",
+              "RelativeDocumentMoniker": "Word2Vec\\Word2Vec_Compare.py",
+              "ToolTip": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Compare.py",
+              "RelativeToolTip": "Word2Vec\\Word2Vec_Compare.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-24T19:22:36.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Word2Vec_Optimized.py",
+              "DocumentMoniker": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Optimized.py",
+              "RelativeDocumentMoniker": "Word2Vec\\Word2Vec_Optimized.py",
+              "ToolTip": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Optimized.py",
+              "RelativeToolTip": "Word2Vec\\Word2Vec_Optimized.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-24T19:22:02.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Word2Vec_Native3.py",
+              "DocumentMoniker": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Native3.py",
+              "RelativeDocumentMoniker": "Word2Vec\\Word2Vec_Native3.py",
+              "ToolTip": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Native3.py",
+              "RelativeToolTip": "Word2Vec\\Word2Vec_Native3.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-21T14:21:28.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Word2Vec_Native2.py",
+              "DocumentMoniker": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Native2.py",
+              "RelativeDocumentMoniker": "Word2Vec\\Word2Vec_Native2.py",
+              "ToolTip": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Native2.py",
+              "RelativeToolTip": "Word2Vec\\Word2Vec_Native2.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-21T12:16:00.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Word2Vec_Native1.py",
+              "DocumentMoniker": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Native1.py",
+              "RelativeDocumentMoniker": "Word2Vec\\Word2Vec_Native1.py",
+              "ToolTip": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec_Native1.py",
+              "RelativeToolTip": "Word2Vec\\Word2Vec_Native1.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-20T18:00:43.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Word2Vec.py",
+              "DocumentMoniker": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec.py",
+              "RelativeDocumentMoniker": "Word2Vec\\Word2Vec.py",
+              "ToolTip": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Week - 4\\Lab2\\Word2Vec\\Word2Vec\\Word2Vec.py",
+              "RelativeToolTip": "Word2Vec\\Word2Vec.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-09-20T17:59:12.957Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
