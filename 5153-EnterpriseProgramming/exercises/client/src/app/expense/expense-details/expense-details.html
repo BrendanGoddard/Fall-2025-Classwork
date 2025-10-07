@@ -1,0 +1,63 @@
+<form [formGroup]="expenseForm">
+  <div style="display: flex">
+    <mat-form-field style="width: 90%; margin: auto">
+      <mat-label>Employee</mat-label>
+      <mat-select placeholder="Employee" required formControlName="employeeId">
+        @for (employee of employees(); track $index) {
+        <mat-option [value]="employee.id">
+          {{ `${employee.firstName} ${employee.lastName}` }}
+        </mat-option>
+        }
+      </mat-select>
+      @if (expenseForm.get('employeeId')?.hasError('min')) {
+      <mat-error>Employee is required</mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div style="display: flex">
+    <mat-form-field style="width: 90%; margin: auto">
+      <mat-label>Category</mat-label>
+      <mat-select placeholder="Category" required formControlName="categoryId">
+        <mat-option [value]="'TRAV'">Travel</mat-option>
+        <mat-option [value]="'LDG'">Lodging</mat-option>
+        <mat-option [value]="'PARK'">Parking</mat-option>
+        <mat-option [value]="'MEAL'">Meals</mat-option>
+        <mat-option [value]="'MISC'">Miscellaneous</mat-option>
+        <mat-option [value]="'TUI'">Tuition</mat-option>
+        <mat-option [value]="'OTH'">Other</mat-option>
+      </mat-select>
+      @if (expenseForm.get('categoryId')?.hasError('required')) {
+      <mat-error>Category is required</mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div style="display: flex">
+    <mat-form-field style="width: 90%; margin: auto">
+      <mat-label>Description</mat-label>
+      <input matInput type="text" required formControlName="description" />
+      @if (expenseForm.get('description')?.hasError('required')) {
+      <mat-error>Description is required</mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div style="display: flex">
+    <mat-form-field style="width: 90%; margin: auto">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" required formControlName="amount" />
+      @if (expenseForm.get('amount')?.hasError('min')) {
+      <mat-error>Amount is required</mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div style="display: flex">
+    <mat-form-field style="width: 90%; margin: auto">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" required formControlName="date" />
+      <mat-datepicker-toggle matIconSuffix [for]="picker" />
+      <mat-datepicker #picker></mat-datepicker>
+      @if (expenseForm.get('date')?.hasError('required')) {
+      <mat-error>Date is required</mat-error>
+      }
+    </mat-form-field>
+  </div>
+</form>

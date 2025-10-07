@@ -6,3 +6,12 @@ export const EMPLOYEE_DEFAULT = {
   phone: '',
   email: ''
 };
+
+export const EXPENSE_DEFAULT = {
+  id: 0,
+  employeeId: 0,
+  categoryId: 0,
+  description: '',
+  date: '',
+  amount: 0
+};
