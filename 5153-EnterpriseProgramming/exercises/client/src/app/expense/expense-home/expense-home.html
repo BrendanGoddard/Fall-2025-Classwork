@@ -2,9 +2,17 @@
 
 <mat-card>
   @if (hasSelectedExpense()) {
-  <mat-card-title align="center" style="margin: 1rem">Expense Details</mat-card-title>
+  <mat-card-title align="center" style="margin: 1rem">
+    {{ this.newExpense() ? 'New Expense' : 'Expense Details' }}
+  </mat-card-title>
   <mat-card-content>
-    <app-expense-details [employees]="employees()" [expense]="expenseInDetail()" />
+    <app-expense-details
+      [employees]="employees()"
+      [expense]="expenseInDetail()"
+      (saved)="saveExpense($event)"
+      (deleted)="deleteExpense($event)"
+      (closed)="refresh()"
+    />
   </mat-card-content>
   } @else {
   <mat-card-title align="center" style="margin: 1rem">Expenses</mat-card-title>
@@ -45,5 +53,12 @@
       </ng-container>
     </table>
   </mat-card-content>
+  
   }
 </mat-card>
+
+@if (!hasSelectedExpense()) {
+<mat-icon (click)="addNewExpense()" matTooltip="Add New Expense" class="addicon" color="primary">
+  control_point
+</mat-icon>
+}

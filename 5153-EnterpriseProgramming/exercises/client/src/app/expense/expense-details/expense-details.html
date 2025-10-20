@@ -60,4 +60,25 @@
       }
     </mat-form-field>
   </div>
+  <div style="display: flex; width: 90%; margin: auto; margin-top: 1em">
+    <button
+      mat-raised-button
+      type="button"
+      style="color: green"
+      (click)="saved.emit(expenseForm.value)"
+      [disabled]="!expenseForm.valid"
+    >
+      Save
+    </button>
+    <span style="flex: 1 1 auto"></span>
+    @if (expense().id > 0){
+    <button mat-raised-button type="button" style="color: red" (click)="deleted.emit(expense().id)">
+      Delete
+    </button>
+    }
+    <span style="flex: 1 1 auto"></span>
+    <button mat-raised-button type="button" style="color: maroon" (click)="closed.emit()">
+      Close
+    </button>
+  </div>
 </form>

@@ -27,6 +27,10 @@ export class ExpenseDetails implements OnInit {
   expense = input<Expense>(EXPENSE_DEFAULT);
   employees = input<Employee[]>([]);
 
+  saved = output<Expense>();
+  deleted = output<number>();
+  closed = output<void>();
+
   // Forms
   expenseForm: FormGroup = new FormGroup({
     id: new FormControl(),
