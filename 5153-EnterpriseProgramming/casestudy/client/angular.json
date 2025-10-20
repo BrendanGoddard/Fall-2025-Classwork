@@ -136,8 +136,9 @@
   "cli": {
     "analytics": "5ecc9b12-86dc-42d1-847d-e6eb4e59d1d3",
     "schematicCollections": [
-      "@cypress/schematic",
-      "@schematics/angular"
+      "@schematics/angular",
+      "@cypress/schematic"
+      
     ]
   }
 }

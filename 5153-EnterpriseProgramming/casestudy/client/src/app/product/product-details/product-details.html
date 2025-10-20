@@ -1,0 +1,120 @@
+<form [formGroup]="productForm">
+  <mat-accordion>
+    <!-- PRODUCT INFORMATION -->
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Product Information</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div style="display: flex">
+        <mat-form-field style="width: 90%; margin: auto">
+          <mat-label>ID</mat-label>
+          <input matInput formControlName="id" [readonly]="!newProduct" />
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex">
+        <mat-form-field style="width: 90%; margin: auto">
+          <mat-label>Vendor</mat-label>
+          <mat-select formControlName="vendorID" required>
+            <mat-option *ngFor="let vendor of vendors; index as i" [value]="vendor.id">
+              {{ vendor.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex">
+        <mat-form-field style="width: 90%; margin: auto">
+          <mat-label>Name</mat-label>
+          <input matInput required formControlName="name" />
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex">
+        <mat-form-field style="width: 90%; margin: auto">
+          <mat-label>Cost</mat-label>
+          <input matInput type="number" required formControlName="cost" />
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex">
+        <mat-form-field style="width: 90%; margin: auto">
+          <mat-label>MSRP</mat-label>
+          <input matInput type="number" required formControlName="msrp" />
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+
+    <!-- INVENTORY INFORMATION -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Inventory Information</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div style="display: flex">
+        <mat-form-field style="width: 90%; margin: auto">
+          <mat-label>Re-order Point</mat-label>
+          <input matInput type="number" required formControlName="rop" />
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex">
+        <mat-form-field style="width: 90%; margin: auto">
+          <mat-label>Economic Order Quantity</mat-label>
+          <input matInput type="number" required formControlName="eoq" />
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex">
+        <mat-form-field style="width: 90%; margin: auto">
+          <mat-label>Quantity On Hand</mat-label>
+          <input matInput type="number" required formControlName="qoh" />
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex">
+        <mat-form-field style="width: 90%; margin: auto">
+          <mat-label>Quantity On Order</mat-label>
+          <input matInput type="number" required formControlName="qoo" />
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <div style="display: flex; width: 90%; margin: auto; margin-top: 1em">
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="saved.emit(productForm.value)"
+      [disabled]="!productForm.valid"
+    >
+      Save
+    </button>
+
+    <span style="flex: 1 1 auto"></span>
+
+    <button
+      *ngIf="!newProduct"
+      mat-raised-button
+      color="warn"
+      type="button"
+      (click)="deleted.emit(productForm.get('id')?.value)"
+    >
+      Delete
+    </button>
+
+    <span style="flex: 1 1 auto"></span>
+
+    <button
+      mat-raised-button
+      color="accent"
+      type="button"
+      (click)="closed.emit()"
+    >
+      Close
+    </button>
+  </div>
+</form>
+ 

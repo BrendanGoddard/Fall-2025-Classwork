@@ -65,7 +65,7 @@ export class VendorHome implements OnInit {
   }
 
   deleteVendor(id: number) {
-    this.vendorService.delete(id).subscribe({
+    this.vendorService.delete(id.toString()).subscribe({
       next: (payload: number) => console.log(`${payload} deleted`),
       error: (e: Error) => console.error(e),
       complete: () => this.refresh()

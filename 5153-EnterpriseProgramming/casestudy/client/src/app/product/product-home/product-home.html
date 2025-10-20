@@ -1,0 +1,67 @@
+<mat-card>
+  <!-- DETAILS VIEW -->
+  <ng-container *ngIf="hasSelectedProduct(); else productList">
+    <mat-card-title align="center" style="margin: 1rem">
+      {{ newProduct() ? 'New Product' : 'Product Details' }}
+    </mat-card-title>
+    <mat-card-content>
+      <app-product-details
+        [vendors]="vendors()"
+        [product]="productInDetail()"
+        (saved)="saveProduct($event)"
+        (deleted)="deleteProduct($event)"
+        (closed)="refresh()"
+      ></app-product-details>
+    </mat-card-content>
+  </ng-container>
+
+  <!-- LIST VIEW -->
+  <ng-template #productList>
+    <mat-card-title align="center" style="margin: 1rem">
+      Products
+    </mat-card-title>
+    <mat-card-content>
+      <table mat-table [dataSource]="productsTable" class="mat-elevation-z2" style="width: 100%">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let product">{{ product.id }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let product">{{ product.name }}</td>
+        </ng-container>
+
+        <!-- Vendor Column -->
+        <ng-container matColumnDef="vendor">
+          <th mat-header-cell *matHeaderCellDef>Vendor</th>
+          <td mat-cell *matCellDef="let product">
+            {{ VendorOfId(product.vendorID)?.name ?? 'N/A' }}
+          </td>
+        </ng-container>
+
+        <!-- Table header + rows -->
+        <tr mat-header-row *matHeaderRowDef="tableColumns; sticky: true"></tr>
+        <tr
+          mat-row
+          *matRowDef="let product; columns: tableColumns"
+          (click)="selectProduct(product)"
+          style="cursor: pointer"
+        ></tr>
+      </table>
+    </mat-card-content>
+
+    <!-- Floating Add Icon -->
+    <button
+      mat-fab
+      color="primary"
+      aria-label="Add Product"
+      (click)="addNewProduct()"
+      style="position: fixed; bottom: 24px; right: 24px"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </ng-template>
+</mat-card>
