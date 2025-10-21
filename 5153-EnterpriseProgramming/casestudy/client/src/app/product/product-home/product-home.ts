@@ -23,7 +23,7 @@ export class ProductHome implements OnInit {
   constructor(public productService: ProductService, public vendorService: VendorService) {
   }
 
-  tableColumns: string[] = ['id', 'VendorId', 'date']; // Defines column order
+  tableColumns: string[] = ['id', 'name', 'vendor']; // Defines column order
 
   // Data
   productInDetail = signal<Product>(PRODUCT_DEFAULT);
@@ -52,11 +52,12 @@ export class ProductHome implements OnInit {
   }
 
   refresh() {
-    this.loadProducts();
-    this.loadVendors();
-    this.productInDetail.set(PRODUCT_DEFAULT);
-    this.newProduct.set(false);
-  }
+  this.loadProducts();
+  this.loadVendors();
+  this.productInDetail.set(null as any); // <-- show list first
+  this.newProduct.set(false);
+}
+
 
   selectProduct(product: Product) {
     this.productInDetail.set(product);
@@ -64,12 +65,19 @@ export class ProductHome implements OnInit {
   }
 
   hasSelectedProduct() {
-    return this.productInDetail().id != " "  || this.newProduct();
-  }
+  const product = this.productInDetail();
+  return product && product.id !== 'PR_0' || this.newProduct();
+}
 
-  VendorOfId(VendorId: number) {
-    return this.vendors().find(e => e.id == VendorId);
-  }
+
+  VendorOfId(vendorId: number) {
+  // Backend sends vendorId, but your vendors likely have .vendorID or .id
+  const vendor = this.vendors().find(
+    (v) => v.id === vendorId || v.id === vendorId
+  );
+  return vendor ? vendor.name : 'N/A';
+}
+
 
   addNewProduct() {
     this.productInDetail.set(PRODUCT_DEFAULT);

@@ -1,6 +1,5 @@
 <mat-card>
-  <!-- DETAILS VIEW -->
-  <ng-container *ngIf="hasSelectedProduct(); else productList">
+  @if (hasSelectedProduct()) {
     <mat-card-title align="center" style="margin: 1rem">
       {{ newProduct() ? 'New Product' : 'Product Details' }}
     </mat-card-title>
@@ -13,15 +12,12 @@
         (closed)="refresh()"
       ></app-product-details>
     </mat-card-content>
-  </ng-container>
-
-  <!-- LIST VIEW -->
-  <ng-template #productList>
+  } @else {
     <mat-card-title align="center" style="margin: 1rem">
       Products
     </mat-card-title>
     <mat-card-content>
-      <table mat-table [dataSource]="productsTable" class="mat-elevation-z2" style="width: 100%">
+      <table mat-table [dataSource]="productsTable">
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -38,30 +34,28 @@
         <ng-container matColumnDef="vendor">
           <th mat-header-cell *matHeaderCellDef>Vendor</th>
           <td mat-cell *matCellDef="let product">
-            {{ VendorOfId(product.vendorID)?.name ?? 'N/A' }}
+            {{ VendorOfId(product.VendorOfId)?.name ?? 'N/A' }}
           </td>
         </ng-container>
 
-        <!-- Table header + rows -->
-        <tr mat-header-row *matHeaderRowDef="tableColumns; sticky: true"></tr>
+        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
         <tr
           mat-row
           *matRowDef="let product; columns: tableColumns"
           (click)="selectProduct(product)"
-          style="cursor: pointer"
         ></tr>
       </table>
     </mat-card-content>
-
-    <!-- Floating Add Icon -->
-    <button
-      mat-fab
-      color="primary"
-      aria-label="Add Product"
-      (click)="addNewProduct()"
-      style="position: fixed; bottom: 24px; right: 24px"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
-  </ng-template>
+  }
 </mat-card>
+
+@if (!hasSelectedProduct()) {
+  <mat-icon
+    (click)="addNewProduct()"
+    matTooltip="Add New Product"
+    class="addicon"
+    color="primary"
+  >
+    control_point
+  </mat-icon>
+}

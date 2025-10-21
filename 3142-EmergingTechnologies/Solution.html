@@ -1,0 +1,257 @@
+<html>
+	<head>
+		<title>ARC Example</title>
+		<style type="text/css">
+			body {
+				background-color: aliceblue;
+			}
+
+			.button {
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				cursor: pointer;
+			}
+			
+			label {
+				font-family: Verdana, Arial, Helvetica;
+				font-size: 11.0pt;
+			}
+			
+			.tableClass {
+				font-family: Verdana, Arial, Helvetica;
+				font-size: 9.0pt;
+				border: 1px solid #002d96;
+			}
+			
+			.gridContainer {
+				display: flex;
+				justify-content: space-around; /* Adjust as needed for spacing */
+				align-items: flex-start; /* Align tables at the top */
+			}
+
+			.cellColumn {
+				width: 20px;
+				height: 25px;
+			}
+
+			.button1 {background-color: #4CAF50;} /* Green */
+			.button2 {background-color: #008CBA;} /* Blue */
+			.button3 {background-color: #f44336;} /* Red */ 
+			.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+			.button5 {background-color: #555555;} /* Black */ 
+		</style>
+		<script src="json_load.js"></script>
+		<script language="JavaScript" type="text/JavaScript">
+			const numFlag = false;
+			
+			let colours = [];
+			colours[0] = "#000000";	// black
+			colours[1] = "#0074D9";	// blue
+			colours[2] = "#FF4136";	// red
+			colours[3] = "#2ECC40";	// green
+			colours[4] = "#FFDC00";	// yellow
+			colours[5] = "#AAAAAA";	// gray
+			colours[6] = "#F012BE";	// fuschia
+			colours[7] = "#FF851B";	// orange
+			colours[8] = "#7FDBFF";	// teal
+			colours[9] = "#870C25";	// brown
+			
+			let inGrid = obj.test[0].input;
+			let outGrid = obj.test[0].output;
+			
+			let outGridTable;
+			let z = 0;
+			
+			function initTables() {
+				let inGridTable = document.getElementById("ingrid");
+			
+				for (let i = 0; i < inGrid.length; i++) {
+					// create a new row at the end of the table
+					let row = inGridTable.insertRow(-1);
+					let rowBuffer = [];
+					
+					for (let j = 0; j < inGrid[0].length; j++) {
+						rowBuffer[j] = row.insertCell(j);
+						if (numFlag) {
+							rowBuffer[j].innerHTML = inGrid[i][j];
+						}
+						
+						rowBuffer[j].style.backgroundColor = setColours(inGrid[i][j]);
+					}
+				}
+				
+				for (let row of inGridTable.rows) {
+					for (let cell of row.cells) {
+					   cell.setAttribute('class', 'cellColumn');
+					}
+				}
+				synchOutputGrid();
+			}
+			
+			function setColours(num) {
+				return colours[num];
+			}
+			
+			function synchOutputGrid() {
+				let firstFlag = false;
+				
+				if (!outGridTable) {
+					outGridTable = document.getElementById("outgrid");
+					firstFlag = true;
+				}
+			
+				for (let i = 0; i < outGrid.length; i++) {
+					// create a new row at the end of the table
+					let row;
+					
+					if (firstFlag) {
+						row = outGridTable.insertRow(-1);
+					}
+					else {
+						row = outGridTable.rows[i];
+					}
+					
+					let rowBuffer = [];
+					
+					for (let j = 0; j < outGrid[0].length; j++) {
+						if (firstFlag) {
+							rowBuffer[j] = row.insertCell(j);
+						}
+						else {
+							rowBuffer[j] = row.cells[j];
+						}
+						
+						if (numFlag) {
+							rowBuffer[j].innerHTML = outGrid[i][j];
+						}
+						
+						rowBuffer[j].style.backgroundColor = setColours(outGrid[i][j]);
+					}
+				}
+				
+				for (let row of outGridTable.rows) {
+					for (let cell of row.cells) {
+					   cell.setAttribute('class', 'cellColumn');
+					}
+				}
+			}
+			
+			// Fill concept
+			// all cells surrounded by a coloured cell on each
+			// of the 4 sides is to be coloured 
+			function solution_00d62c1b() {
+				// step 1 - copy original grid
+				for (let i = 0; i < outGrid.length; i++) {
+					for (let j = 0; j < outGrid[0].length; j++) {
+						outGrid[i][j] = inGrid[i][j];
+					}
+				}
+				synchOutputGrid();
+			
+				for (let i = 0; i < outGrid.length; i++) {
+					for (let j = 0; j < outGrid[0].length; j++) {
+						outGrid[i][j] = inGrid[i][j];
+					}
+				}
+				
+				//let containFlag = false;
+				
+				for (let i = 1; i < outGrid.length - 1; i++) {
+					for (let j = 1; j < outGrid[0].length - 1; j++) {
+						// check black cell with possible top and left boundary
+						if (outGrid[i][j] === 0 && outGrid[i][j - 1] === 3 && outGrid[i - 1][j] === 3) {
+							// try single cell container
+							if (outGrid[i + 1][j] === 3 && outGrid[i][j + 1] === 3) {
+								outGrid[i][j] = 4;	// yellow
+								//containFlag = false;
+							}
+							// try single row (multi-cell) container
+							else if (outGrid[i + 1][j] === 3 && outGrid[i][j + 1] === 0) {
+								let y = j;
+								let width = 0;
+								
+								// Walk across until hitting a non-0 or boundary
+								while (outGrid[i][y + 1] === 0 && outGrid[i + 1][y + 1] === 3) {
+									y++;
+									width++;
+								}
+
+								// Fill row from j through j+width
+								for (let k = j; k <= j + width; k++) {
+									outGrid[i][k] = 4; // yellow
+								}
+							}
+							// try multi-row multi-column container
+							else if (outGrid[i + 1][j] === 0 && outGrid[i + 1][j - 1] === 3 && outGrid[i - 1][j + 1] === 3) {
+								let x = i;
+								let y = j + 1;
+								let width = 1;
+								let height = 1;
+								let failed = false;
+								
+								while (outGrid[x][y] === 0) {
+									if (outGrid[x - 1][y] !== 3) {
+										failed = true;
+									}
+									
+									y++;
+									width++;
+								}
+								
+								y = j;
+								x = i + 1;
+								
+								while (outGrid[x][y] === 0) {
+									if (outGrid[x][y - 1] !== 3) {
+										failed = true;
+									}
+									
+									x++;
+									height++;
+								}
+								
+								if (!failed) {
+									x = i;
+									y = j;
+									
+									for (x = i; x < i + height; x++) {
+										for (y = j; y < j + width; y++) {
+											outGrid[x][y] = 4;	// yellow
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				
+				synchOutputGrid();
+			
+			}
+			
+			function clearOutput() {
+				for (let i = 0; i < outGrid.length; i++) {
+					for (let j = 0; j < outGrid[0].length; j++) {
+						outGrid[i][j] = 0;
+					}
+				}
+				synchOutputGrid();
+			}
+		</script>
+	</head>
+	<body onload="initTables();">
+		<div class="gridContainer">
+			<table id="ingrid" class="tableClass"></table>
+			<table id="outgrid" class="tableClass"></table>
+		</div>
+		<br />
+		<input type="button" class="button button2" value="Clear" onclick="clearOutput();"/>
+		<input type="button" class="button button3" value="Solve" onclick="solution_00d62c1b();"/>
+		<br /><br />
+	</body>
+</html>

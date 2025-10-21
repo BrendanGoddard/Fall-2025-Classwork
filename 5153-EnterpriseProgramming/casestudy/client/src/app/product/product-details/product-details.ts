@@ -1,31 +1,30 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { PRODUCT_DEFAULT } from '@app/constants';
 
-// ✅ Import Material Modules (not directives)
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-product-details',
-  standalone: true, // ✅ Make sure this is a standalone component
+  standalone: true,
+  templateUrl: './product-details.html',
+  styleUrls: ['./product-details.scss'],
   imports: [
+    CommonModule,            // ✅ Fixes ngIf / ngFor errors
     ReactiveFormsModule,
-    MatExpansionModule,
-    MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
     MatOptionModule,
-    MatDatepickerModule
+    MatFormFieldModule,
+    MatExpansionModule
   ],
-  templateUrl: './product-details.html',
-  styleUrls: ['./product-details.scss'] // ✅ should be plural
 })
 export class ProductDetails implements OnChanges {
   @Input() product = PRODUCT_DEFAULT;
@@ -43,7 +42,7 @@ export class ProductDetails implements OnChanges {
     this.newProduct = this.product.id === PRODUCT_DEFAULT.id;
     this.productForm = this.fb.group({
       id: [this.product.id, Validators.required],
-      vendorID: [this.product.vendorId, Validators.required],
+      vendorId: [this.product.vendorId, Validators.required],
       name: [this.product.name, Validators.required],
       cost: [this.product.cost, [Validators.required, Validators.min(0)]],
       msrp: [this.product.msrp, [Validators.required, Validators.min(0)]],

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ARC 00d62c1b – HTML Table Solver</title>
+<style>
+  :root { --cell: 26px; font-family: system-ui, sans-serif; }
+  body { margin: 24px; background:#111; color:#eee; }
+  h1 { margin: 0 0 8px; font-size: 18px; }
+  .row { display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; }
+  .panel { background:#1b1b1b; padding:16px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.5); }
+  .grid { display:inline-block; border-collapse:collapse; border-spacing:0; }
+  .grid td { width:var(--cell); height:var(--cell); border:1px solid #222; }
+  /* ARC color palette (0..9) – adjust as you prefer */
+  .c0  { background:#000000; } /* empty */
+  .c1  { background:#0074D9; }
+  .c2  { background:#2ECC40; }
+  .c3  { background:#FF4136; } /* red walls in this puzzle */
+  .c4  { background:#FFDC00; } /* fill color */
+  .c5  { background:#7FDBFF; }
+  .c6  { background:#B10DC9; }
+  .c7  { background:#FFFFFF; }
+  .c8  { background:#AAAAAA; }
+  .c9  { background:#F012BE; }
+
+  .cols { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+  .label { font-size:12px; color:#aaa; margin:6px 0 4px; letter-spacing:.02em; }
+  .good { color:#2ECC40; }
+  .bad  { color:#FF4136; }
+  button, select { background:#222; color:#eee; border:1px solid #333; padding:8px 10px; border-radius:8px; }
+  button:hover { background:#2a2a2a; cursor:pointer; }
+  .legend { display:flex; gap:8px; align-items:center; font-size:12px; color:#bbb; }
+  .swatch { width:16px; height:16px; border:1px solid #333; display:inline-block; vertical-align:middle; }
+  .footer { color:#888; font-size:12px; margin-top:12px; }
+  @media (max-width:900px){ .cols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+  <h1>ARC Puzzle <code>00d62c1b</code> — Table Renderer + Solver</h1>
+
+  <div class="row" style="margin-bottom:12px;">
+    <div class="panel">
+      <div class="legend">
+        <span>Legend:</span>
+        <span class="swatch c0"></span> 0
+        <span class="swatch c3"></span> 3 (walls)
+        <span class="swatch c4"></span> 4 (filled)
+      </div>
+    </div>
+    <div class="panel">
+      <label for="which">Choose example:</label>
+      <select id="which"></select>
+      <button id="solveBtn">Solve & Compare</button>
+      <span id="status" style="margin-left:10px;"></span>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="panel">
+      <div class="label">Input</div>
+      <table id="inputTable" class="grid"></table>
+    </div>
+    <div class="panel">
+      <div class="label">Expected Output (if available)</div>
+      <table id="expectedTable" class="grid"></table>
+    </div>
+    <div class="panel">
+      <div class="label">Predicted Output</div>
+      <table id="predictedTable" class="grid"></table>
+    </div>
+    <div class="panel">
+      <div class="label">Diff (Predicted vs Expected)</div>
+      <table id="diffTable" class="grid"></table>
+      <div class="footer">Green = match, Red = mismatch (only calculated if expected exists)</div>
+    </div>
+  </div>
+
+<script>
+/* ======= Puzzle data (from ARC-1 GitHub, user-supplied) ======= */
+const puzzle = {"train": [{"input": [[0,0,0,0,0,0],[0,0,3,0,0,0],[0,3,0,3,0,0],[0,0,3,0,3,0],[0,0,0,3,0,0],[0,0,0,0,0,0]],
+"output": [[0,0,0,0,0,0],[0,0,3,0,0,0],[0,3,4,3,0,0],[0,0,3,4,3,0],[0,0,0,3,0,0],[0,0,0,0,0,0]]},
+{"input": [[0,0,0,0,0,0,0,0,0,0],[0,0,3,0,3,0,0,0,0,0],[0,0,0,3,0,3,0,0,0,0],[0,0,3,0,0,0,3,0,0,0],[0,0,0,0,0,3,0,3,0,0],[0,0,0,3,0,3,3,0,0,0],[0,0,3,3,3,0,0,0,0,0],[0,0,0,3,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]],
+"output": [[0,0,0,0,0,0,0,0,0,0],[0,0,3,0,3,0,0,0,0,0],[0,0,0,3,0,3,0,0,0,0],[0,0,3,0,0,0,3,0,0,0],[0,0,0,0,0,3,4,3,0,0],[0,0,0,3,0,3,3,0,0,0],[0,0,3,3,3,0,0,0,0,0],[0,0,0,3,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]},
+{"input": [[0,0,0,0,0,3,0,0,0,0],[0,0,0,0,3,0,0,0,0,0],[0,3,3,0,3,3,0,3,0,0],[3,0,0,3,0,0,3,0,3,0],[0,0,0,3,0,0,3,3,0,0],[0,0,0,3,0,0,3,0,0,0],[0,0,0,3,0,0,3,0,0,0],[0,0,0,0,3,3,0,3,0,0],[0,0,0,0,0,0,0,0,3,0],[0,0,0,0,0,0,0,0,0,0]],
+"output": [[0,0,0,0,0,3,0,0,0,0],[0,0,0,0,3,0,0,0,0,0],[0,3,3,0,3,3,0,3,0,0],[3,0,0,3,4,4,3,4,3,0],[0,0,0,3,4,4,3,3,0,0],[0,0,0,3,4,4,3,0,0,0],[0,0,0,3,4,4,3,0,0,0],[0,0,0,0,3,3,0,3,0,0],[0,0,0,0,0,0,0,0,3,0],[0,0,0,0,0,0,0,0,0,0]]},
+{"input": [[0,0,0,0,0,0,0,0,0,0],[0,0,3,3,3,3,0,0,0,0],[0,0,3,0,0,3,0,0,0,0],[0,0,3,0,0,3,0,3,0,0],[0,0,3,3,3,3,3,3,3,0],[0,0,0,3,0,0,0,0,3,0],[0,0,0,3,0,0,0,3,3,0],[0,0,0,3,3,0,0,3,0,3],[0,0,0,3,0,3,0,0,3,0],[0,0,0,0,3,0,0,0,0,0]],
+"output": [[0,0,0,0,0,0,0,0,0,0],[0,0,3,3,3,3,0,0,0,0],[0,0,3,4,4,3,0,0,0,0],[0,0,3,4,4,3,0,3,0,0],[0,0,3,3,3,3,3,3,3,0],[0,0,0,3,0,0,0,0,3,0],[0,0,0,3,0,0,0,3,3,0],[0,0,0,3,3,0,0,3,4,3],[0,0,0,3,4,3,0,0,3,0],[0,0,0,0,3,0,0,0,0,0]]},
+{"input": [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,3,3,3,3,0,3,3,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,3,0,3,0,0,0,0,0,0,0,3,0],[0,0,0,0,0,0,0,0,3,3,3,3,3,3,3,3,0,0,0,0],[0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,3,0,0,0,0],[0,0,0,0,3,0,0,0,3,0,0,0,0,0,0,3,0,0,0,0],[0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,3,0,0,0,0],[0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,3,0,0,0,0],[0,0,3,0,0,0,0,0,3,3,3,3,3,3,3,3,0,0,0,0],[0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,3,0,3,0,0],[0,0,0,0,0,0,3,3,0,0,3,0,0,3,0,0,0,0,0,0],[0,0,0,0,0,0,0,3,0,0,3,3,0,0,3,0,0,3,0,0],[0,0,0,0,0,0,0,3,3,3,3,0,3,0,0,3,3,3,0,0],[0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,3,0,3,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,3,3,3,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+"output": [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,3,3,3,3,4,3,3,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,3,4,3,0,0,0,0,0,0,0,3,0],[0,0,0,0,0,0,0,0,3,3,3,3,3,3,3,3,0,0,0,0],[0,0,0,0,0,0,0,0,3,4,4,4,4,4,4,3,0,0,0,0],[0,0,0,0,3,0,0,0,3,4,4,4,4,4,4,3,0,0,0,0],[0,0,0,0,0,0,0,0,3,4,4,4,4,4,4,3,0,0,0,0],[0,0,0,0,0,0,0,0,3,4,4,4,4,4,4,3,0,0,0,0],[0,0,3,0,0,0,0,0,3,3,3,3,3,3,3,3,0,0,0,0],[0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,3,0,3,0,0],[0,0,0,0,0,0,3,3,4,4,3,0,0,3,0,0,0,0,0,0],[0,0,0,0,0,0,0,3,4,4,3,3,0,0,3,0,0,3,0,0],[0,0,0,0,0,0,0,3,3,3,3,0,3,0,0,3,3,3,0,0],[0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,3,4,3,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,3,3,3,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]}],
+"test": [{"input": [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,3,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,3,0,3,3,3,3,3,0,3,3,0,0,0,0,0,0,0,0],[0,0,0,0,3,0,0,0,0,3,0,0,3,0,0,0,0,0,0,0],[0,0,0,0,3,3,3,3,3,0,3,3,3,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,3,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,3,0,0],[0,0,0,0,0,0,0,0,0,3,3,3,3,3,0,0,0,3,0,0],[0,0,0,0,0,0,0,0,0,3,0,0,0,3,0,0,0,3,0,0],[0,0,0,0,0,0,0,0,3,3,3,3,3,3,0,0,0,3,0,0],[0,0,0,0,0,0,3,3,0,3,0,0,0,3,3,3,3,3,0,0],[0,0,3,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0],[0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,3,0,3,0,3,3,3,3,3,3,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,3,0,0,0,3,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,3,0,0,0,3,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,3,3,3,3,3,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]}]};
+
+/* ======= Rendering helpers ======= */
+function makeTable(target, grid) {
+  target.innerHTML = "";
+  const tbody = document.createElement("tbody");
+  grid.forEach(row => {
+    const tr = document.createElement("tr");
+    row.forEach(v => {
+      const td = document.createElement("td");
+      td.className = "c" + (v ?? 0);
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  target.appendChild(tbody);
+}
+
+function sameShape(a, b) {
+  return a.length === b.length && a.every((row, i) => row.length === b[i].length);
+}
+function deepEqual(a, b) {
+  if (!sameShape(a,b)) return false;
+  for (let r=0;r<a.length;r++) for (let c=0;c<a[0].length;c++) {
+    if (a[r][c] !== b[r][c]) return false;
+  }
+  return true;
+}
+
+/* ======= Core solver for 00d62c1b ======= */
+/* Rule: fill any rectangle interior (0-cells) that is fully enclosed by 3's with 4's.
+   Implementation: for each zero cell, find nearest 3 above/below/left/right; if all exist
+   and the rectangle borders are all 3s, fill the interior with 4. */
+function solve(grid) {
+  const H = grid.length, W = grid[0].length;
+  const out = grid.map(row => row.slice());
+
+  const left3  = Array.from({length:H}, () => Array(W).fill(-1));
+  const right3 = Array.from({length:H}, () => Array(W).fill(-1));
+  const up3    = Array.from({length:H}, () => Array(W).fill(-1));
+  const down3  = Array.from({length:H}, () => Array(W).fill(-1));
+
+  // scan rows
+  for (let r=0;r<H;r++){
+    let last=-1;
+    for (let c=0;c<W;c++){ if(grid[r][c]===3) last=c; left3[r][c]=last; }
+    last=-1;
+    for (let c=W-1;c>=0;c--){ if(grid[r][c]===3) last=c; right3[r][c]=last; }
+  }
+  // scan cols
+  for (let c=0;c<W;c++){
+    let last=-1;
+    for (let r=0;r<H;r++){ if(grid[r][c]===3) last=r; up3[r][c]=last; }
+    last=-1;
+    for (let r=H-1;r>=0;r--){ if(grid[r][c]===3) last=r; down3[r][c]=last; }
+  }
+
+  const filled = new Set();
+  const key = (r,c)=>r+"_"+c;
+
+  for (let r=0;r<H;r++){
+    for (let c=0;c<W;c++){
+      if (grid[r][c]!==0 || filled.has(key(r,c))) continue;
+      const L = left3[r][c], R = right3[r][c], U = up3[r][c], D = down3[r][c];
+      if (L<0 || R<0 || U<0 || D<0) continue;
+      const r1 = U+1, r2 = D-1, c1 = L+1, c2 = R-1;
+      if (r1>r2 || c1>c2) continue;
+
+      // verify rectangular border is all 3's
+      let ok = true;
+      for (let cc=c1; cc<=c2; cc++){
+        if (grid[U][cc]!==3 || grid[D][cc]!==3){ ok=false; break; }
+      }
+      if (ok){
+        for (let rr=r1; rr<=r2; rr++){
+          if (grid[rr][L]!==3 || grid[rr][R]!==3){ ok=false; break; }
+        }
+      }
+      if (!ok) continue;
+
+      // fill this interior
+      for (let rr=r1; rr<=r2; rr++){
+        for (let cc=c1; cc<=c2; cc++){
+          out[rr][cc]=4;
+          filled.add(key(rr,cc));
+        }
+      }
+    }
+  }
+  return out;
+}
+
+/* ======= UI wiring ======= */
+const whichEl = document.getElementById('which');
+const inputTable = document.getElementById('inputTable');
+const expectedTable = document.getElementById('expectedTable');
+const predictedTable = document.getElementById('predictedTable');
+const diffTable = document.getElementById('diffTable');
+const statusEl = document.getElementById('status');
+
+const options = [
+  ...puzzle.train.map((_,i)=>({type:'train', idx:i, label:`Train #${i+1}`})),
+  ...puzzle.test.map((_,i)=>({type:'test', idx:i, label:`Test #${i+1}`}))
+];
+
+options.forEach((opt,i)=>{
+  const o = document.createElement('option');
+  o.value = i; o.textContent = opt.label;
+  whichEl.appendChild(o);
+});
+
+function renderCurrent() {
+  const {type, idx} = options[+whichEl.value];
+  if (type==='train'){
+    const pair = puzzle.train[idx];
+    makeTable(inputTable, pair.input);
+    makeTable(expectedTable, pair.output);
+    const pred = solve(pair.input);
+    makeTable(predictedTable, pred);
+
+    // Diff grid: 7 if equal, else 1 (green/red overlay via classes)
+    const diff = pair.output.map((row,r)=> row.map((v,c)=> v===pred[r][c] ? 7 : 1));
+    makeTable(diffTable, diff);
+
+    const ok = deepEqual(pred, pair.output);
+    statusEl.innerHTML = ok ? '<span class="good">✓ Matches expected</span>' :
+                              '<span class="bad">✗ Mismatch</span>';
+  } else {
+    const tc = puzzle.test[idx];
+    makeTable(inputTable, tc.input);
+    expectedTable.innerHTML = "";
+    const pred = solve(tc.input);
+    makeTable(predictedTable, pred);
+    diffTable.innerHTML = "";
+    statusEl.textContent = 'Predicted test output shown.';
+  }
+}
+
+document.getElementById('solveBtn').addEventListener('click', renderCurrent);
+whichEl.addEventListener('change', renderCurrent);
+renderCurrent();
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grid Drawing</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      width: 20px;
+      height: 20px;
+    }
+    .black {
+      background-color: black;
+    }
+    .green {
+      background-color: limegreen;
+    }
+    .yellow {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+
+<table id="grid"></table>
+
+<script>
+  const rows = 32;
+  const cols = 32;
+
+  // 0 = black, 1 = green
+  const pixelMap = [
+    // Manually converted from image (32x32). 1=green, 0=black.
+    // Only top half shown as example, full image needs full data.
+    [0,0,1,0,0, 0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0],
+    [0,1,0,1,0, 0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0],
+    [1,0,0,0,1, 0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0],
+    [0,1,0,1,0, 0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,1,0,0, 0,0,1,1,1, 1,0,1,1,1,1, 1,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0, 0,0,1,0,0, 1,0,1,0,0,1, 1,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0, 0,0,1,1,1, 1,0,1,1,1,1, 1,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0],
+    // Fill rest of rows as needed...
+  ];
+
+  // Fill rest of the grid with zeros if not 32x32
+  while (pixelMap.length < rows) {
+    pixelMap.push(new Array(cols).fill(0));
+  }
+
+  // Flood fill to find enclosed (0-valued) regions
+  const fillMap = pixelMap.map(row => row.slice()); // clone
+  const visited = Array.from({length: rows}, () => Array(cols).fill(false));
+
+  function isInside(x, y) {
+    return x >= 0 && x < rows && y >= 0 && y < cols;
+  }
+
+  function floodFill(x, y, mark) {
+    const queue = [[x, y]];
+    const area = [];
+    let touchesEdge = false;
+
+    while (queue.length > 0) {
+      const [cx, cy] = queue.pop();
+      if (!isInside(cx, cy) || visited[cx][cy] || fillMap[cx][cy] !== 0) continue;
+
+      visited[cx][cy] = true;
+      area.push([cx, cy]);
+
+      if (cx === 0 || cy === 0 || cx === rows - 1 || cy === cols - 1) {
+        touchesEdge = true;
+      }
+
+      queue.push([cx + 1, cy], [cx - 1, cy], [cx, cy + 1], [cx, cy - 1]);
+    }
+
+    // If doesn't touch edge, mark as yellow (2)
+    if (!touchesEdge) {
+      for (const [rx, ry] of area) {
+        fillMap[rx][ry] = mark;
+      }
+    }
+  }
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      if (!visited[i][j] && fillMap[i][j] === 0) {
+        floodFill(i, j, 2); // 2 = yellow
+      }
+    }
+  }
+
+  // Render the table
+  const table = document.getElementById('grid');
+  for (let i = 0; i < rows; i++) {
+    const row = document.createElement('tr');
+    for (let j = 0; j < cols; j++) {
+      const cell = document.createElement('td');
+      if (fillMap[i][j] === 1) cell.className = 'green';
+      else if (fillMap[i][j] === 2) cell.className = 'yellow';
+      else cell.className = 'black';
+      row.appendChild(cell);
+    }
+    table.appendChild(row);
+  }
+</script>
+
+</body>
+</html>
