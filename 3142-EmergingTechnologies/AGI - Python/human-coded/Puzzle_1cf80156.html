@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ARC 1cf80156 – Crop to Bounding Box</title>
+  <link rel="icon" type="image/png" href="../images/1cf80156-image.png">
+
+<style>
+  @keyframes gridPulse {
+    0%,100%{opacity:0.15;}50%{opacity:0.3;}
+  }
+  @keyframes cellFloat {
+    0%,100%{transform:translateY(0) scale(1);opacity:0.6;}
+    50%{transform:translateY(-10px) scale(1.1);opacity:0.8;}
+  }
+
+  body {
+    font-family:"Segoe UI",system-ui,sans-serif;
+    background:#0a0a0a;
+    color:#eee;
+    margin:0;
+    padding:24px;
+    position:relative;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  body::before {
+    content:'';
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:
+      linear-gradient(90deg,rgba(46,204,113,0.03) 1px,transparent 1px),
+      linear-gradient(rgba(46,204,113,0.03) 1px,transparent 1px);
+    background-size:50px 50px;
+    animation:gridPulse 4s ease-in-out infinite;
+    pointer-events:none;z-index:0;
+  }
+  body::after {
+    content:'';
+    position:fixed;
+    top:0;left:0;width:100%;height:100%;
+    background:radial-gradient(circle at 50% 50%,rgba(46,204,113,0.08) 0%,transparent 50%);
+    pointer-events:none;z-index:0;
+  }
+
+  .grid-cells{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    pointer-events:none;z-index:0;overflow:hidden;
+  }
+  .grid-cell{
+    position:absolute;width:8px;height:8px;background:#2ecc71;
+    opacity:0.6;border-radius:2px;animation:cellFloat 6s ease-in-out infinite;
+  }
+
+  h1{margin-top:60px;margin-bottom:8px;font-size:22px;font-weight:600;text-align:center;}
+  .legend{text-align:center;color:#aaa;font-size:13px;margin-bottom:20px;line-height:1.4;}
+
+  .row{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;justify-content:center;}
+  .panel{background:#1b1b1b;border-radius:10px;padding:14px;box-shadow:0 0 6px rgba(0,0,0,0.3);}
+  table{border-collapse:collapse;}
+  td{width:26px;height:26px;border:1px solid #222;}
+  .label{font-size:12px;color:#aaa;margin-bottom:6px;}
+  button{
+    background:#2ecc40;border:0;color:#111;font-weight:700;
+    padding:8px 14px;border-radius:8px;cursor:pointer;transition:background .15s;
+  }
+  button:hover{background:#27ae60;}
+  select{
+    background:#222;color:#eee;border:1px solid #333;border-radius:8px;
+    padding:6px 8px;margin-right:10px;
+  }
+  .ok{outline:2px solid #2ecc40;}
+  .bad{outline:2px solid #ff4136;}
+  .c0{background:#000}.c1{background:#0074D9}.c2{background:#FF4136}.c3{background:#2ECC40}
+  .c4{background:#FFDC00}.c5{background:#AAAAAA}.c6{background:#F012BE}.c7{background:#FF851B}
+  .c8{background:#7FDBFF}.c9{background:#870C25}
+
+  footer{
+    margin-top:40px;
+    padding:10px;
+    color:#888;
+    font-size:13px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+  footer a{
+    color:#2ecc71;text-decoration:none;margin:0 6px;
+  }
+  footer a:hover{text-decoration:underline;}
+
+  #home-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 999;
+    background: rgba(34, 34, 34, 0.8);
+    border: 1px solid #2ecc71;
+    border-radius: 8px;
+    padding: 6px 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.4);
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  #home-btn a {
+    color: #2ecc71;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  #home-btn:hover {
+    background: rgba(46, 204, 113, 0.15);
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+  <div id="home-btn">
+  <a href="../index.html" title="Back to Home">🏠 Home</a>
+  </div>
+
+  <div class="grid-cells" id="gridCells"></div>
+
+  <h1>ARC 1cf80156 – Crop to Bounding Box</h1>
+  <p class="legend">
+    Concept: Find the minimal axis-aligned rectangle that contains all non-zero cells and
+    output only that sub-grid (no scaling or mirroring). Works for any grid size.
+  </p>
+
+  <div class="row" style="align-items:center;margin-bottom:12px;">
+    <label>Example:
+      <select id="exampleSelect"></select>
+    </label>
+    <button id="solveBtn">Solve</button>
+    <span id="status" style="margin-left:12px;color:#aaa;"></span>
+  </div>
+
+  <div class="row">
+    <div class="panel"><div class="label">Input</div><table id="inputTable"></table></div>
+    <div class="panel"><div class="label">Expected (train)</div><table id="expectedTable"></table></div>
+    <div class="panel"><div class="label">Predicted</div><table id="predictedTable"></table></div>
+    <div class="panel"><div class="label">Diff</div><table id="diffTable"></table><div class="label">Green = match, Red = mismatch</div></div>
+  </div>
+
+<script>
+/* ------------------------------ Utilities ------------------------------ */
+const COLORS=["c0","c1","c2","c3","c4","c5","c6","c7","c8","c9"];
+const $=id=>document.getElementById(id);
+
+function renderGrid(el,grid){
+  el.innerHTML="";
+  const tb=document.createElement("tbody");
+  grid.forEach(row=>{
+    const tr=document.createElement("tr");
+    row.forEach(v=>{
+      const td=document.createElement("td");
+      td.className=COLORS[v]||"c0";
+      tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+  el.appendChild(tb);
+}
+function sameShape(a,b){return a&&b&&a.length===b.length&&a.every((r,i)=>r.length===b[i].length)}
+function deepEqual(a,b){if(!sameShape(a,b))return false;for(let r=0;r<a.length;r++)for(let c=0;c<a[0].length;c++)if(a[r][c]!==b[r][c])return false;return true}
+
+/* ------------------------------ Core Logic ------------------------------ */
+// Return the tight submatrix that bounds all non-zero cells.
+// If the grid is all zeros, return the original grid.
+function cropBoundingBox(input){
+  const H=input.length,W=input[0].length;
+  let minR=H,minC=W,maxR=-1,maxC=-1;
+  for(let r=0;r<H;r++){
+    for(let c=0;c<W;c++){
+      if(input[r][c]!==0){
+        if(r<minR)minR=r; if(c<minC)minC=c;
+        if(r>maxR)maxR=r; if(c>maxC)maxC=c;
+      }
+    }
+  }
+  if(maxR<0) return input.map(row=>row.slice()); // all zeros
+
+  const out=[];
+  for(let r=minR;r<=maxR;r++){
+    const row=[];
+    for(let c=minC;c<=maxC;c++) row.push(input[r][c]);
+    out.push(row);
+  }
+  return out;
+}
+
+/* ------------------------------ Page Logic ------------------------------ */
+let puzzle, examples=[];
+
+async function load(){
+  const res=await fetch("../data/1cf80156.json");
+  puzzle=await res.json();
+
+  examples=[
+    ...puzzle.train.map((_,i)=>({type:"train", i, label:`Train #${i+1}`})),
+    ...(puzzle.test||[]).map((_,i)=>({type:"test", i, label:`Test #${i+1}`}))
+  ];
+  const s=$("exampleSelect");
+  examples.forEach((ex,idx)=>{
+    const o=document.createElement("option");
+    o.value=idx; o.textContent=ex.label; s.appendChild(o);
+  });
+
+  renderCurrent();
+}
+
+function getCurrent(){
+  const ex=examples[+$("exampleSelect").value||0];
+  if(ex.type==="train") return {input:puzzle.train[ex.i].input, expected:puzzle.train[ex.i].output};
+  return {input:puzzle.test[ex.i].input, expected:puzzle.test[ex.i].output || null};
+}
+
+function renderCurrent(){
+  const {input,expected}=getCurrent();
+  renderGrid($("inputTable"),input);
+  renderGrid($("expectedTable"), expected || input.map(r=>r.map(()=>0)));
+  $("predictedTable").innerHTML=$("diffTable").innerHTML=$("status").textContent="";
+}
+
+function solve(){
+  const {input,expected}=getCurrent();
+  const pred=cropBoundingBox(input);
+  renderGrid($("predictedTable"), pred);
+
+  if(expected){
+    // Note: expected is smaller than input → compare shapes + values
+    const shapesMatch = sameShape(expected, pred);
+    let isMatch = shapesMatch && deepEqual(expected, pred);
+
+    // Build diff grid using expected as canvas (so sizes line up)
+    const diff = expected.map((row,r)=>row.map((v,c)=> (shapesMatch && v===pred[r][c]) ? 7 : v));
+    renderGrid($("diffTable"), diff);
+
+    const W=expected[0].length;
+    $("diffTable").querySelectorAll("td").forEach((td,k)=>{
+      const r=Math.floor(k/W), c=k%W;
+      const ok = shapesMatch && expected[r][c]===pred[r][c];
+      td.classList.add(ok?"ok":"bad");
+    });
+
+    $("status").textContent = isMatch ? "✅ Perfect match" : "❌ Mismatch";
+  }else{
+    renderGrid($("diffTable"), pred);
+    $("status").textContent="No expected output for this example.";
+  }
+}
+
+$("solveBtn").addEventListener("click", solve);
+$("exampleSelect").addEventListener("change", renderCurrent);
+load();
+</script>
+<script>
+  const gridCells=document.getElementById('gridCells');
+  const colors=['#2ecc71','#27ae60','#1abc9c','#16a085'];
+  function createCell(){
+    const cell=document.createElement('div');
+    cell.className='grid-cell';
+    const x=Math.random()*window.innerWidth;
+    const y=Math.random()*window.innerHeight;
+    const color=colors[Math.floor(Math.random()*colors.length)];
+    const delay=Math.random()*6;
+    const duration=4+Math.random()*4;
+    cell.style.left=x+'px';
+    cell.style.top=y+'px';
+    cell.style.background=color;
+    cell.style.animationDelay=delay+'s';
+    cell.style.animationDuration=duration+'s';
+    gridCells.appendChild(cell);
+  }
+  for(let i=0;i<20;i++){createCell();}
+</script>
+
+</body>
+
+<footer>
+  Resources:
+  <a href="https://arcprize.org/guide" target="_blank">ARC Prize</a> |
+  <a href="https://github.com/fchollet/ARC" target="_blank">François Chollet’s GitHub</a> |
+  <a href="https://arxiv.org/abs/1911.01547" target="_blank">ARC Research Paper</a> |
+  <a href="https://arc-explainer-production.up.railway.app/" target="_blank">ARC Explainer</a>
+</footer>
+</html>

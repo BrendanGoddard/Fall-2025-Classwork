@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ARC-1 Handmade Puzzle Solvers</title>
+  <link rel="icon" type="image/png" href="images/1cf80156-image.png">
+
+  <style>
+    @keyframes gridPulse {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.3; }
+    }
+
+    @keyframes cellFloat {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+      50% { transform: translateY(-10px) scale(1.1); opacity: 0.8; }
+    }
+
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: #0a0a0a;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(90deg, rgba(46, 204, 113, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(46, 204, 113, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridPulse 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(46, 204, 113, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .grid-cells {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .grid-cell {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #2ecc71;
+      opacity: 0.6;
+      border-radius: 2px;
+      animation: cellFloat 6s ease-in-out infinite;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    p.subtitle {
+      color: #aaa;
+      font-size: 15px;
+      margin-top: 6px;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      padding: 30px;
+      width: 100%;
+      max-width: 960px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 12px rgba(0,0,0,0.6);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      margin: 10px 0 6px;
+      font-size: 18px;
+      color: #2ecc71;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 10px;
+      min-height: 36px;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 6px;
+      background: #2ecc71;
+      color: #111;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background .15s;
+    }
+
+    a.button:hover { background: #27ae60; }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      color: #888;
+      font-size: 14px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      color: #2ecc71;
+      text-decoration: none;
+      margin: 0 6px;
+    }
+
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="grid-cells" id="gridCells"></div>
+
+  <header>
+    <h1>ARC-1 Handmade Puzzle Solvers</h1>
+    <p class="subtitle">Locally hosted ARC-1 solutions recreated in JavaScript</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <img src="images/1cf80156-image.png" alt="Puzzle 1cf80156">
+      <h2>Crop to bounding box (1cf80156)</h2>
+      <p>Crops the puzzle down to a bounding box that fits it.</p>
+      <a class="button" href="human-coded/Puzzle_1cf80156.html">Open Puzzle</a>
+    </div>
+
+    <div class="card">
+      <img src="images/0ca9ddb6-image.png" alt="Puzzle 0ca9ddb6">
+      <h2>Cross & Diagonal Coloring (0ca9ddb6)</h2>
+      <p>Creates crosses and diagonals around certain colors, leave all others untouched.</p>
+      <a class="button" href="human-coded/Puzzle_0ca9ddb6.html">Open Puzzle</a>
+    </div>
+
+    <div class="card">
+      <img src="images/25d8a9c8-image.png" alt="Puzzle 25d8a9c8">
+      <h2>Monochrome Rows (25d8a9c8)</h2>
+      <p>Rows with all identical colors become gray, anything else gets erased.</p>
+      <a class="button" href="human-coded/Puzzle_25d8a9c8.html">Open Puzzle</a>
+    </div>
+  </main>
+
+  <footer>
+    Resources:
+    <a href="https://arcprize.org/guide" target="_blank">ARC Prize</a> |
+    <a href="https://github.com/fchollet/ARC" target="_blank">François Chollet's GitHub</a> |
+    <a href="https://arxiv.org/abs/1911.01547" target="_blank">ARC Research Paper</a>
+    <a href="https://arc-explainer-production.up.railway.app/">ARC Explainer</a>
+  </footer>
+
+  <script>
+    const gridCells = document.getElementById('gridCells');
+    const colors = ['#2ecc71', '#27ae60', '#1abc9c', '#16a085'];
+
+    function createCell() {
+      const cell = document.createElement('div');
+      cell.className = 'grid-cell';
+
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const delay = Math.random() * 6;
+      const duration = 4 + Math.random() * 4;
+
+      cell.style.left = x + 'px';
+      cell.style.top = y + 'px';
+      cell.style.background = color;
+      cell.style.animationDelay = delay + 's';
+      cell.style.animationDuration = duration + 's';
+
+      gridCells.appendChild(cell);
+    }
+
+    for (let i = 0; i < 20; i++) {
+      createCell();
+    }
+  </script>
+
+</body>
+</html>

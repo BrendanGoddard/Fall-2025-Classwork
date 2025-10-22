@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">BrendanGoddardINFO5126InClass-1</string>
+    <string name="pokemon_image">Pokemon Logo</string>
+    <string name="favourite_text">Your Favourite Pokemon is</string>
+    <string name="buttonOne_text">OPEN SELECTION ACTIVITY</string>
+    <string name="buttonTwo_text">GO BACK TO MAIN ACTIVITY</string>
+    <string name="selectingText">Choose your favourite Pokemon</string>
+    <string name="defaultPokemon"></string>
+    <string-array name="pokemon">
+        <item>Pikachu</item>
+        <item>Butterfree</item>
+        <item>Squirtle</item>
+        <item>Charmander</item>
+        <item>Bulbasaur</item>
+    </string-array>
+
+</resources>
