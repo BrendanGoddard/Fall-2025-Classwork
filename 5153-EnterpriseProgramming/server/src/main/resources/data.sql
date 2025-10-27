@@ -22,14 +22,14 @@ INSERT INTO Expense_Category (ID, Description) VALUES ('MISC', 'Miscealleous');
 INSERT INTO Expense_Category (ID, Description) VALUES ('OTH', 'OTHER');
 
 INSERT INTO Expense (Employee_ID, Category_ID, Description, Date, Amount)
-   VALUES (1, 'PARK', 'Parking for Convention', '2023-04-13', 19.99);
+   VALUES (1, 'PARK', 'Parking for Convention', '2023-04-13T04:00:00Z', 19.99);
 INSERT INTO Expense (Employee_ID, Category_ID, Description, Date,  Amount)
-   VALUES (1, 'LDG', 'Hotel for Convention', '2023-04-15', 219.99);
+   VALUES (1, 'LDG', 'Hotel for Convention', '2023-04-15T04:00:00Z', 219.99);
 INSERT INTO Expense (Employee_ID, Category_ID, Description, Date,  Amount)
-   VALUES (1, 'MEAL', 'Food at Convention', '2023-04-13', 39.99);
+   VALUES (1, 'MEAL', 'Food at Convention', '2023-04-13T04:00:00Z', 39.99);
 INSERT INTO Expense (Employee_ID, Category_ID, Description, Date,  Amount)
-   VALUES (2, 'TUI', 'Tuition for Cobol course', '2023-05-19', 29.99);
+   VALUES (2, 'TUI', 'Tuition for Cobol course', '2023-05-19T04:00:00Z', 29.99);
 INSERT INTO Expense (Employee_ID, Category_ID, Description, Date,  Amount)
-   VALUES (2, 'MISC', 'Bought widgets for the office', '2023-05-20', 19.99);
+   VALUES (2, 'MISC', 'Bought widgets for the office', '2023-05-20T04:00:00Z', 19.99);
 INSERT INTO Expense (Employee_ID, Category_ID, Description, Date,  Amount)
-   VALUES (6, 'TRAV', 'Bus to Fanshawe', '2025-09-21', 50.00);
+   VALUES (6, 'TRAV', 'Bus to Fanshawe', '2025-09-21T04:00:00Z', 50.00);

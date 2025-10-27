@@ -1,61 +1,70 @@
 <mat-card>
-  @if (hasSelectedProduct()) {
-    <mat-card-title align="center" style="margin: 1rem">
-      {{ newProduct() ? 'New Product' : 'Product Details' }}
-    </mat-card-title>
+  @if (hasSelected()) {
+    <!-- PRODUCT DETAILS VIEW -->
+    <mat-card-title align="center" style="margin:1rem">Product Details</mat-card-title>
     <mat-card-content>
       <app-product-details
         [vendors]="vendors()"
-        [product]="productInDetail()"
-        (saved)="saveProduct($event)"
-        (deleted)="deleteProduct($event)"
-        (closed)="refresh()"
-      ></app-product-details>
+        [product]="productInDetail()!"
+        [isNewProduct]="newProduct()"
+        (saved)="save($event)"
+        (deleted)="delete($event)"
+        (closed)="closeDetails()"
+      />
     </mat-card-content>
   } @else {
-    <mat-card-title align="center" style="margin: 1rem">
-      Products
-    </mat-card-title>
+    <!-- PRODUCT LIST VIEW -->
+    <mat-card-title align="center" style="margin:1rem">Products</mat-card-title>
     <mat-card-content>
-      <table mat-table [dataSource]="productsTable">
+      <table mat-table [dataSource]="productsTable" class="mat-elevation-z2">
+
+        <!-- Header -->
+        <tr mat-header-row *matHeaderRowDef="tableColumns; sticky: true"></tr>
+
+        <!-- Rows -->
+        <tr mat-row *matRowDef="let p; columns: tableColumns" (click)="selectProduct(p)"></tr>
+
         <!-- ID Column -->
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef>ID</th>
-          <td mat-cell *matCellDef="let product">{{ product.id }}</td>
+          <th mat-header-cell *matHeaderCellDef>
+            <div align="center">ID</div>
+          </th>
+          <td mat-cell *matCellDef="let p">
+            <div align="center">{{ p.id }}</div>
+          </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let product">{{ product.name }}</td>
+          <th mat-header-cell *matHeaderCellDef>
+            <div align="center">Name</div>
+          </th>
+          <td mat-cell *matCellDef="let p">
+            <div align="center">{{ p.name }}</div>
+          </td>
         </ng-container>
 
         <!-- Vendor Column -->
         <ng-container matColumnDef="vendor">
-          <th mat-header-cell *matHeaderCellDef>Vendor</th>
-          <td mat-cell *matCellDef="let product">
-            {{ VendorOfId(product.VendorOfId)?.name ?? 'N/A' }}
+          <th mat-header-cell *matHeaderCellDef>
+            <div align="center">Vendor</div>
+          </th>
+          <td mat-cell *matCellDef="let p">
+            <div align="center">{{ vendorName(p.vendorId) }}</div>
           </td>
         </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-        <tr
-          mat-row
-          *matRowDef="let product; columns: tableColumns"
-          (click)="selectProduct(product)"
-        ></tr>
       </table>
     </mat-card-content>
   }
 </mat-card>
 
-@if (!hasSelectedProduct()) {
+<!-- ADD NEW PRODUCT ICON -->
+@if (!hasSelected()) {
   <mat-icon
-    (click)="addNewProduct()"
+    (click)="addNew()"
     matTooltip="Add New Product"
     class="addicon"
-    color="primary"
-  >
+    color="primary">
     control_point
   </mat-icon>
 }

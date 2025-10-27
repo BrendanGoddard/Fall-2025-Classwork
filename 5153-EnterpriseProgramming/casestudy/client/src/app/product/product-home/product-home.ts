@@ -1,9 +1,9 @@
 import { Component, OnInit, signal } from '@angular/core';
-
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { Vendor } from '@app/vendor/vendor';
 import { VendorService } from '@app/vendor/vendor.service';
@@ -11,104 +11,113 @@ import { VendorService } from '@app/vendor/vendor.service';
 import { Product } from '@app/product/product';
 import { ProductService } from '@app/product/product.service';
 import { PRODUCT_DEFAULT } from '@app/constants';
-import { ProductDetails } from '@app/product/product-details/product-details'
+import { ProductDetails } from '@app/product/product-details/product-details';
 
 @Component({
-  selector: 'app-expense-home',
-  imports: [CommonModule, MatCardModule, MatTableModule, MatIconModule, ProductDetails],
+  selector: 'app-product-home',
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatTableModule,
+    MatIconModule,
+    MatTooltipModule,
+    ProductDetails
+  ],
   templateUrl: './product-home.html',
   styleUrl: './product-home.scss'
 })
 export class ProductHome implements OnInit {
-  constructor(public productService: ProductService, public vendorService: VendorService) {
-  }
+  constructor(
+    public productService: ProductService,
+    public vendorService: VendorService
+  ) {}
 
-  tableColumns: string[] = ['id', 'name', 'vendor']; // Defines column order
-
-  // Data
-  productInDetail = signal<Product>(PRODUCT_DEFAULT);
-  newProduct = signal<boolean>(false);
+  tableColumns: string[] = ['id', 'name', 'vendor'];
   productsTable = new MatTableDataSource<Product>();
-  vendors = signal<Vendor[]>([]);
 
+  vendors = signal<Vendor[]>([]);
+  productInDetail = signal<Product | null>(null);
+  newProduct = signal<boolean>(false);
+
+  // Load everything on start
   ngOnInit(): void {
     this.refresh();
   }
 
+  refresh() {
+    this.loadProducts();
+    this.loadVendors();
+  }
+
   loadProducts() {
     this.productService.getAll().subscribe({
-      next: (payload: Product[]) => {
-        this.productsTable.data = payload; // Add the array to the table
-      },
-      error: e => console.log(e)
+      next: (payload: Product[]) => (this.productsTable.data = payload),
+      error: (e) => console.error('Failed to load products:', e),
     });
   }
 
   loadVendors() {
     this.vendorService.getAll().subscribe({
       next: (payload: Vendor[]) => this.vendors.set(payload),
-      error: e => console.log(e)
+      error: (e) => console.error('Failed to load vendors:', e),
     });
   }
 
-  refresh() {
-  this.loadProducts();
-  this.loadVendors();
-  this.productInDetail.set(null as any); // <-- show list first
+  vendorName(vendorId: number) {
+    return this.vendors().find((v) => v.id === vendorId)?.name ?? 'N/A';
+  }
+
+  // When you click a product row
+  addNew() {
+  this.productInDetail.set({ ...PRODUCT_DEFAULT });
+  this.newProduct.set(true);
+}
+
+selectProduct(p: Product) {
+  this.productInDetail.set(p);
   this.newProduct.set(false);
 }
 
+  // Determines which view to show
+  hasSelected(): boolean {
+    const p = this.productInDetail();
+    return p != null && p.id !== '';
+  }
 
-  selectProduct(product: Product) {
-    this.productInDetail.set(product);
+  // Called when the Save button is pressed
+  save(p: Product) {
+    if (this.newProduct()) {
+      this.productService.create(p).subscribe({
+        next: () => this.afterSave(),
+        error: (err) => console.error('Create failed:', err),
+      });
+    } else {
+      this.productService.update(p).subscribe({
+        next: () => this.afterSave(),
+        error: (err) => console.error('Update failed:', err),
+      });
+    }
+  }
+
+  // Unified post-save logic
+  afterSave() {
+    this.productInDetail.set(null);
     this.newProduct.set(false);
+    this.loadProducts();
   }
 
-  hasSelectedProduct() {
-  const product = this.productInDetail();
-  return product && product.id !== 'PR_0' || this.newProduct();
-}
-
-
-  VendorOfId(vendorId: number) {
-  // Backend sends vendorId, but your vendors likely have .vendorID or .id
-  const vendor = this.vendors().find(
-    (v) => v.id === vendorId || v.id === vendorId
-  );
-  return vendor ? vendor.name : 'N/A';
-}
-
-
-  addNewProduct() {
-    this.productInDetail.set(PRODUCT_DEFAULT);
-    this.newProduct.set(true);
-  }
-
-  saveProduct(product: Product) {
-    this.newProduct() ? this.createProduct(product) : this.updateProduct(product);
-  }
-
-  updateProduct(product: Product) {
-    this.productService.update(product).subscribe({
-      next: (payload: Product) => console.log(payload),
-      error: (e: Error) => console.error(e),
-      complete: () => this.refresh()
-    });
-  }
-
-  createProduct(product: Product) {
-    this.productService.create(product).subscribe({
-      next: (payload: Product) => console.log(payload),
-      error: (e: Error) => console.error(e),
-      complete: () => this.refresh()
-    });
-  }
-
-  deleteProduct(id: string) {
+  // Delete button
+  delete(id: string) {
     this.productService.delete(id).subscribe({
-      next: (payload: number) => console.log(`${payload} deleted`),
-      error: (e: Error) => console.error(e),
-      complete: () => this.refresh()
+      next: () => this.afterSave(),
+      error: (err) => console.error('Delete failed:', err),
     });
+  }
+
+  // Close button from details view
+  closeDetails() {
+    this.productInDetail.set(null);
+    this.newProduct.set(false);
+    this.loadProducts();
   }
 }

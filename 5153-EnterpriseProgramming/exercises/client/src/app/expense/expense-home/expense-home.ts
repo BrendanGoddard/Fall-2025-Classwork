@@ -12,11 +12,12 @@ import { Expense } from '@app/expense/expense';
 import { ExpenseService } from '@app/expense/expense.service';
 import { EXPENSE_DEFAULT } from '@app/constants';
 import { ExpenseDetails } from '@app/expense/expense-details/expense-details';
+import { MatSortHeader, MatSortModule, Sort } from '@angular/material/sort';
 
 
 @Component({
   selector: 'app-expense-home',
-  imports: [CommonModule, MatCardModule, MatTableModule, MatIconModule, ExpenseDetails],
+  imports: [CommonModule, MatCardModule, MatTableModule, MatIconModule, ExpenseDetails, MatSortHeader, MatSortModule],
   templateUrl: './expense-home.html',
   styleUrl: './expense-home.scss'
 })
@@ -34,6 +35,36 @@ export class ExpenseHome implements OnInit {
 
   ngOnInit(): void {
     this.refresh();
+  }
+
+  sortExpenses(sort: Sort) {
+
+    const columnToSortingFunction = {
+
+      id: (a: Expense, b: Expense) => {
+        return sort.direction === 'asc'
+          ? (a.id - b.id)
+          : (b.id - a.id)
+      },
+
+      employeeId: (a: Expense, b: Expense) => {
+        return sort.direction === 'asc'
+          ? (a.employeeId - b.employeeId)
+          : (b.employeeId - a.employeeId)
+      },
+
+      date: (a: Expense, b: Expense) => {
+        return sort.direction === 'asc'
+          ? (a.date < b.date ? -1 : 1)
+          : (b.date < a.date ? -1 : 1)
+      },
+
+    };
+
+    let sortingKey: "id" | "employeeId" | "date" = sort.active as keyof typeof columnToSortingFunction;
+    let howToSort = columnToSortingFunction[sortingKey];
+
+    this.expensesTable.data = this.expensesTable.data.sort(howToSort);
   }
 
   loadExpenses() {

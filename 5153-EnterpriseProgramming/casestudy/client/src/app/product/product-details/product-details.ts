@@ -1,59 +1,67 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { PRODUCT_DEFAULT } from '@app/constants';
-
+import { Component, OnInit, input, output } from '@angular/core';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatLabel, MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule, MatAccordion } from '@angular/material/expansion';
+
+import { Product } from '@app/product/product';
+import { Vendor } from '@app/vendor/vendor';
+import { PRODUCT_DEFAULT } from '@app/constants';
 
 @Component({
   selector: 'app-product-details',
-  standalone: true,
-  templateUrl: './product-details.html',
-  styleUrls: ['./product-details.scss'],
   imports: [
-    CommonModule,            // ✅ Fixes ngIf / ngFor errors
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
     MatOptionModule,
-    MatFormFieldModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatAccordion,
+    MatLabel,
+    MatFormField
   ],
+  templateUrl: './product-details.html',
+  styleUrl: './product-details.scss',
 })
-export class ProductDetails implements OnChanges {
-  @Input() product = PRODUCT_DEFAULT;
-  @Input() vendors: any[] = [];
-  @Output() saved = new EventEmitter<any>();
-  @Output() deleted = new EventEmitter<any>();
-  @Output() closed = new EventEmitter<void>();
+export class ProductDetails implements OnInit {
+  product = input<Product>(PRODUCT_DEFAULT);
+  vendors = input<Vendor[]>([]);
+  isNewProduct = input<boolean>(false); // 👈 ADD THIS LINE
 
-  productForm!: FormGroup;
-  newProduct = false;
+  saved = output<Product>();
+  deleted = output<string>();
+  closed = output<void>();
 
-  constructor(private fb: FormBuilder) {}
 
-  ngOnChanges(): void {
-    this.newProduct = this.product.id === PRODUCT_DEFAULT.id;
-    this.productForm = this.fb.group({
-      id: [this.product.id, Validators.required],
-      vendorId: [this.product.vendorId, Validators.required],
-      name: [this.product.name, Validators.required],
-      cost: [this.product.cost, [Validators.required, Validators.min(0)]],
-      msrp: [this.product.msrp, [Validators.required, Validators.min(0)]],
-      rop: [this.product.rop, [Validators.required, Validators.min(0)]],
-      eoq: [this.product.eoq, [Validators.required, Validators.min(0)]],
-      qoh: [this.product.qoh, [Validators.required, Validators.min(0)]],
-      qoo: [this.product.qoo, [Validators.required, Validators.min(0)]],
+  productForm: FormGroup = new FormGroup({
+    id: new FormControl('', Validators.required),
+    vendorId: new FormControl('', Validators.min(1)),
+    name: new FormControl('', Validators.required),
+    cost: new FormControl(0, Validators.required),
+    msrp: new FormControl(0, Validators.required),
+    rop: new FormControl(0, Validators.required),
+    eoq: new FormControl(0, Validators.required),
+    qoh: new FormControl(0, Validators.required),
+    qoo: new FormControl(0, Validators.required),
+  });
+
+  ngOnInit(): void {
+    const p = this.product();
+
+    this.productForm.setValue({
+      id: p.id,
+      vendorId: p.vendorId,
+      name: p.name,
+      cost: p.cost,
+      msrp: p.msrp,
+      rop: p.rop,
+      eoq: p.eoq,
+      qoh: p.qoh,
+      qoo: p.qoo,
     });
-  }
-
-  productFormValue() {
-    return this.productForm.value;
   }
 }

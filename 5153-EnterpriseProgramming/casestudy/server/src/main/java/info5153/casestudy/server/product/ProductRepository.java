@@ -13,5 +13,5 @@ public interface ProductRepository extends CrudRepository<Product, String> {
     @Modifying
     @Transactional
     @Query("DELETE from Product WHERE id = ?1")
-    int deleteOne(Long id);
+    int deleteOne(String id);
 }
