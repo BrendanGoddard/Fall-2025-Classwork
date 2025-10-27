@@ -1,0 +1,17 @@
+{
+    "id": 0,
+    "employeeId": 6,
+    "items": [
+        {
+            "id": 0,
+            "reportId": 0,
+            "expenseId": 1
+        },
+        {
+            "id": 0,
+            "reportId": 0,
+            "expenseId": "2"
+        }
+    ],
+    "date": ""
+}

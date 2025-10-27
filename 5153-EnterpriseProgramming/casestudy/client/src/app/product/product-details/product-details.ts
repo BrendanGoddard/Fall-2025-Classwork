@@ -1,5 +1,5 @@
 import { Component, OnInit, input, output } from '@angular/core';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators, AbstractControl  } from '@angular/forms';
 import { MatLabel, MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,18 +35,27 @@ export class ProductDetails implements OnInit {
   saved = output<Product>();
   deleted = output<string>();
   closed = output<void>();
+  existingIds = input<String[]>([]);
+
 
 
   productForm: FormGroup = new FormGroup({
-    id: new FormControl('', Validators.required),
+    id: new FormControl('', Validators.compose([
+      Validators.required,
+      (control: AbstractControl): { invalidId: boolean } | null => {
+        if (this.product().id != '') return null; // Skip check if readonly
+        let invalidId = this.existingIds().find(id => id == control.value) != undefined;
+        return invalidId ? { invalidId } : null;
+      }
+    ])),
     vendorId: new FormControl('', Validators.min(1)),
-    name: new FormControl('', Validators.required),
-    cost: new FormControl(0, Validators.required),
-    msrp: new FormControl(0, Validators.required),
-    rop: new FormControl(0, Validators.required),
-    eoq: new FormControl(0, Validators.required),
-    qoh: new FormControl(0, Validators.required),
-    qoo: new FormControl(0, Validators.required),
+    name: new FormControl('', Validators.min(1)),
+    cost: new FormControl(0, Validators.min(0)),
+    msrp: new FormControl(0, Validators.min(0)),
+    rop: new FormControl(0, Validators.min(0)),
+    eoq: new FormControl(0, Validators.min(0)),
+    qoh: new FormControl(0, Validators.min(0)),
+    qoo: new FormControl(0, Validators.min(0)),
   });
 
   ngOnInit(): void {

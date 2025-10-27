@@ -10,6 +10,7 @@
         (saved)="save($event)"
         (deleted)="delete($event)"
         (closed)="closeDetails()"
+        [existingIds]="productIds()"
       />
     </mat-card-content>
   } @else {

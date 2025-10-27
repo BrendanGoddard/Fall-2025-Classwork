@@ -7,15 +7,14 @@
 
       <!-- ID FIELD -->
       <div style="display:flex">
-        <mat-form-field style="width:90%; margin:auto">
+        <mat-form-field ... >
           <mat-label>ID</mat-label>
-          <input
-            matInput
-            type="text"
-            formControlName="id"
-            [readonly]="!isNewProduct" >
+          <input matInput type="text" required formControlName="id" [readonly]="product().id != ''"
+          />
           @if (productForm.get('id')?.hasError('required')) {
-            <mat-error>ID is required</mat-error>
+          <mat-error>ID is required</mat-error>
+          } @if (productForm.get('id')?.hasError('invalidId')) {
+          <mat-error>ID must be unique</mat-error>
           }
         </mat-form-field>
       </div>
@@ -51,7 +50,7 @@
         <mat-form-field style="width:90%; margin:auto">
           <mat-label>Cost</mat-label>
           <input matInput type="number" required formControlName="cost" />
-          @if (productForm.get('cost')?.hasError('required')) {
+          @if (productForm.get('cost')?.hasError('min')) {
             <mat-error>Cost is required</mat-error>
           }
         </mat-form-field>
@@ -62,7 +61,7 @@
         <mat-form-field style="width:90%; margin:auto">
           <mat-label>MSRP</mat-label>
           <input matInput type="number" required formControlName="msrp" />
-          @if (productForm.get('msrp')?.hasError('required')) {
+          @if (productForm.get('msrp')?.hasError('min')) {
             <mat-error>MSRP is required</mat-error>
           }
         </mat-form-field>
@@ -79,6 +78,9 @@
         <mat-form-field style="width:90%; margin:auto">
           <mat-label>Re-order Point</mat-label>
           <input matInput type="number" required formControlName="rop" />
+          @if (productForm.get('rop')?.hasError('min')) {
+            <mat-error>Re-order Point must be >== 0</mat-error>
+          }
         </mat-form-field>
       </div>
 
@@ -86,6 +88,9 @@
         <mat-form-field style="width:90%; margin:auto">
           <mat-label>Economic Order Quantity</mat-label>
           <input matInput type="number" required formControlName="eoq" />
+          @if (productForm.get('eoq')?.hasError('min')) {
+            <mat-error>Economic Order Quantity must be >== 0</mat-error>
+          }
         </mat-form-field>
       </div>
 
@@ -93,6 +98,9 @@
         <mat-form-field style="width:90%; margin:auto">
           <mat-label>Quantity On Hand</mat-label>
           <input matInput type="number" required formControlName="qoh" />
+          @if (productForm.get('qoh')?.hasError('min')) {
+            <mat-error>Quantity On Hand must be >== 0</mat-error>
+          }
         </mat-form-field>
       </div>
 
@@ -100,6 +108,9 @@
         <mat-form-field style="width:90%; margin:auto">
           <mat-label>Quantity On Order</mat-label>
           <input matInput type="number" required formControlName="qoo" />
+          @if (productForm.get('qoo')?.hasError('min')) {
+            <mat-error>Quantity On Order must be >== 0</mat-error>
+          }
         </mat-form-field>
       </div>
     </mat-expansion-panel>

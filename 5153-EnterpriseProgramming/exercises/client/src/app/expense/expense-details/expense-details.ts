@@ -35,7 +35,7 @@ export class ExpenseDetails implements OnInit {
   expenseForm: FormGroup = new FormGroup({
     id: new FormControl(),
     employeeId: new FormControl('', Validators.compose([Validators.min(1)])),
-    categoryId: new FormControl('', Validators.compose([Validators.required])),
+    categoryId: new FormControl('', Validators.compose([Validators.min(1)])),
     description: new FormControl('', Validators.compose([Validators.required])),
     date: new FormControl('', Validators.compose([Validators.required])),
     amount: new FormControl('', Validators.compose([Validators.min(1)]))

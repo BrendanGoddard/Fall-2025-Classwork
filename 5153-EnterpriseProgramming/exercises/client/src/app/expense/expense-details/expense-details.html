@@ -26,7 +26,7 @@
         <mat-option [value]="'TUI'">Tuition</mat-option>
         <mat-option [value]="'OTH'">Other</mat-option>
       </mat-select>
-      @if (expenseForm.get('categoryId')?.hasError('required')) {
+      @if (expenseForm.get('categoryId')?.hasError('min')) {
       <mat-error>Category is required</mat-error>
       }
     </mat-form-field>

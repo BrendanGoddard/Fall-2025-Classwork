@@ -73,10 +73,14 @@ export class ProductHome implements OnInit {
   this.newProduct.set(true);
 }
 
-selectProduct(p: Product) {
-  this.productInDetail.set(p);
-  this.newProduct.set(false);
-}
+  selectProduct(p: Product) {
+    this.productInDetail.set(p);
+    this.newProduct.set(false);
+  }
+
+  productIds() : String[] {
+    return this.productsTable.data.map(product => product.id);
+  }
 
   // Determines which view to show
   hasSelected(): boolean {
