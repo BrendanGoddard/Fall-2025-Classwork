@@ -35,4 +35,10 @@ public class ExpenseController {
         int deletedCount = expenseRepository.deleteOne(id);
         return new ResponseEntity<Integer>(deletedCount, HttpStatus.OK);
     }
+
+    @GetMapping("/api/expenses/{employeeId}")
+    public ResponseEntity<Iterable<Expense>> findByEmployeeId(@PathVariable long employeeId) {
+        Iterable<Expense> expenses = expenseRepository.findByEmployeeId(employeeId);
+        return new ResponseEntity<Iterable<Expense>>(expenses, HttpStatus.OK);
+    }
 }

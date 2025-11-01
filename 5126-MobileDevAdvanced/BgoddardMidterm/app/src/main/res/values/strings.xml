@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">BgoddardMidterm</string>
+    <string name="bulbasaur">Bulbasaur</string>
+    <string name="charmander">Charmander</string>
+    <string name="squirtle">Squirtle</string>
+    <string name="butterfree">Butterfree</string>
+    <string name="pidgey">Pidgey</string>
+    <string name="pikachu">Pikachu</string>
+    <string name="chikorita">Chikorita</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="FragmentTitle">Enter Favourite Pokemon name</string>
+    <string name="fragmentPlaceHolder">Pokemon Name</string>
+    <string name="fragmentButton">Go</string>
+</resources>

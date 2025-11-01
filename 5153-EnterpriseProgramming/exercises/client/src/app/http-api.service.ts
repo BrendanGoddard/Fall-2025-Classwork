@@ -32,4 +32,9 @@ export class HttpApiService<T> {
   delete(id: number): Observable<number> {
     return this.http.delete<number>(`${this.apiURL()}/${this.endPoint}/${id}`);
   }
+
+  getAllById(id: number): Observable<T[]> {
+    return this.http.get<T[]>(`${this.apiURL()}/${this.endPoint}/${id}`);
+  }
+
 }

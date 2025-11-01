@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <TextView
+        android:id="@+id/textViewListPokemons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textViewListPokemons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radioButtonBulbasaur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bulbasaur" />
+
+        <RadioButton
+            android:id="@+id/radioButtonCharmander"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/charmander" />
+
+        <RadioButton
+            android:id="@+id/radioButtonSquirtle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/squirtle" />
+
+        <RadioButton
+            android:id="@+id/radioButtonButterfree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/butterfree" />
+
+        <RadioButton
+            android:id="@+id/radioButtonPidgey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pidgey" />
+
+        <RadioButton
+            android:id="@+id/radioButtonPikachu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pikachu" />
+
+        <RadioButton
+            android:id="@+id/radioButtonChikorita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/chikorita" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/infoText"
+        android:layout_width="58dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="185dp"
+        android:layout_marginEnd="185dp"
+        android:layout_marginBottom="76dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
+        android:name="com.bgoddard.bgoddardmidterm.FirstFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
