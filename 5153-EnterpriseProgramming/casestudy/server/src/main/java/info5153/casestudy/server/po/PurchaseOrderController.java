@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import info5153.casestudy.server.product.Product;
+
 import java.util.List;
 
 @CrossOrigin
@@ -46,4 +48,5 @@ public class PurchaseOrderController {
         poDAO.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }

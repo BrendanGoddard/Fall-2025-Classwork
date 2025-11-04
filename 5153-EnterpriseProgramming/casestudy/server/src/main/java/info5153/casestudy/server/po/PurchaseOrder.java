@@ -1,6 +1,8 @@
 package info5153.casestudy.server.po;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +18,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PurchaseOrder {
 
     @Id

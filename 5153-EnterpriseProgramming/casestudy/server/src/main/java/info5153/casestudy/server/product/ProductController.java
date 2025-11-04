@@ -1,5 +1,7 @@
 package info5153.casestudy.server.product;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,4 +39,6 @@ public class ProductController {
         Product newproduct = productRepository.save(product);
         return new ResponseEntity<Product>(newproduct, HttpStatus.OK);
     }
+
 }
+

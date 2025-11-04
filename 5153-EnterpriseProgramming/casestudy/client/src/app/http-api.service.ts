@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class HttpApiService<T> {
-  constructor(private http: HttpClient, private endPoint: String) {
+  constructor(protected http: HttpClient, private endPoint: String) {
   }
 
   apiURL(): string {
@@ -33,5 +33,6 @@ export class HttpApiService<T> {
     return this.http.delete<number>(`${this.apiURL()}/${this.endPoint}/${id}`);
   }
 
+  
 
 }
