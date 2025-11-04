@@ -1,9 +1,10 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 
 import { Vendor } from '@app/vendor/vendor';
 import { VendorService } from '@app/vendor/vendor.service';
@@ -21,17 +22,19 @@ import { ProductDetails } from '@app/product/product-details/product-details';
     MatTableModule,
     MatIconModule,
     MatTooltipModule,
+    MatSortModule,
     ProductDetails
   ],
   templateUrl: './product-home.html',
   styleUrl: './product-home.scss'
 })
-export class ProductHome implements OnInit {
+export class ProductHome implements OnInit, AfterViewInit {
   constructor(
     public productService: ProductService,
     public vendorService: VendorService
   ) {}
 
+  @ViewChild(MatSort) sort!: MatSort;
   tableColumns: string[] = ['id', 'name', 'vendor'];
   productsTable = new MatTableDataSource<Product>();
 
@@ -39,9 +42,13 @@ export class ProductHome implements OnInit {
   productInDetail = signal<Product | null>(null);
   newProduct = signal<boolean>(false);
 
-  // Load everything on start
   ngOnInit(): void {
     this.refresh();
+  }
+
+  ngAfterViewInit(): void {
+    // Connect sorting after the view initializes
+    this.productsTable.sort = this.sort;
   }
 
   refresh() {
@@ -51,7 +58,11 @@ export class ProductHome implements OnInit {
 
   loadProducts() {
     this.productService.getAll().subscribe({
-      next: (payload: Product[]) => (this.productsTable.data = payload),
+      next: (payload: Product[]) => {
+        this.productsTable.data = payload;
+        // ensure sorting is initialized after reload
+        if (this.sort) this.productsTable.sort = this.sort;
+      },
       error: (e) => console.error('Failed to load products:', e),
     });
   }
@@ -67,28 +78,25 @@ export class ProductHome implements OnInit {
     return this.vendors().find((v) => v.id === vendorId)?.name ?? 'N/A';
   }
 
-  // When you click a product row
   addNew() {
-  this.productInDetail.set({ ...PRODUCT_DEFAULT });
-  this.newProduct.set(true);
-}
+    this.productInDetail.set({ ...PRODUCT_DEFAULT });
+    this.newProduct.set(true);
+  }
 
   selectProduct(p: Product) {
     this.productInDetail.set(p);
     this.newProduct.set(false);
   }
 
-  productIds() : String[] {
-    return this.productsTable.data.map(product => product.id);
+  productIds(): string[] {
+    return this.productsTable.data.map((product) => product.id);
   }
 
-  // Determines which view to show
   hasSelected(): boolean {
     const p = this.productInDetail();
     return p != null && p.id !== '';
   }
 
-  // Called when the Save button is pressed
   save(p: Product) {
     if (this.newProduct()) {
       this.productService.create(p).subscribe({
@@ -103,14 +111,12 @@ export class ProductHome implements OnInit {
     }
   }
 
-  // Unified post-save logic
   afterSave() {
     this.productInDetail.set(null);
     this.newProduct.set(false);
     this.loadProducts();
   }
 
-  // Delete button
   delete(id: string) {
     this.productService.delete(id).subscribe({
       next: () => this.afterSave(),
@@ -118,10 +124,32 @@ export class ProductHome implements OnInit {
     });
   }
 
-  // Close button from details view
   closeDetails() {
     this.productInDetail.set(null);
     this.newProduct.set(false);
     this.loadProducts();
+  }
+
+  // 🔽 Manual sorting function (optional if MatSort auto-sort is preferred)
+  sortData(sort: Sort) {
+    const data = this.productsTable.data.slice();
+    if (!sort.active || sort.direction === '') {
+      this.productsTable.data = data;
+      return;
+    }
+
+    this.productsTable.data = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'id':
+          return this.compare(a.id, b.id, isAsc);
+        default:
+          return 0;
+      }
+    });
+  }
+
+  private compare(a: string, b: string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 }

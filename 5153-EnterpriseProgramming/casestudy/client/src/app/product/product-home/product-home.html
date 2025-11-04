@@ -17,17 +17,13 @@
     <!-- PRODUCT LIST VIEW -->
     <mat-card-title align="center" style="margin:1rem">Products</mat-card-title>
     <mat-card-content>
-      <table mat-table [dataSource]="productsTable" class="mat-elevation-z2">
 
-        <!-- Header -->
-        <tr mat-header-row *matHeaderRowDef="tableColumns; sticky: true"></tr>
-
-        <!-- Rows -->
-        <tr mat-row *matRowDef="let p; columns: tableColumns" (click)="selectProduct(p)"></tr>
+      <!-- Add matSort directive here -->
+      <table mat-table [dataSource]="productsTable" matSort (matSortChange)="sortData($event)" class="mat-elevation-z2">
 
         <!-- ID Column -->
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="id">
             <div align="center">ID</div>
           </th>
           <td mat-cell *matCellDef="let p">
@@ -54,6 +50,11 @@
             <div align="center">{{ vendorName(p.vendorId) }}</div>
           </td>
         </ng-container>
+
+        <!-- Header and Rows -->
+        <tr mat-header-row *matHeaderRowDef="tableColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let p; columns: tableColumns" (click)="selectProduct(p)"></tr>
+
       </table>
     </mat-card-content>
   }

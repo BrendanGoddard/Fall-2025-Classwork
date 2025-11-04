@@ -1,5 +1,5 @@
 import { Component, OnInit, input, output } from '@angular/core';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators, AbstractControl  } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { MatLabel, MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,24 +30,30 @@ import { PRODUCT_DEFAULT } from '@app/constants';
 export class ProductDetails implements OnInit {
   product = input<Product>(PRODUCT_DEFAULT);
   vendors = input<Vendor[]>([]);
-  isNewProduct = input<boolean>(false); // 👈 ADD THIS LINE
+  isNewProduct = input<boolean>(false);
+  existingIds = input<string[]>([]); // 🔧 string[] instead of String[]
 
   saved = output<Product>();
   deleted = output<string>();
   closed = output<void>();
-  existingIds = input<String[]>([]);
 
-
-
+  // ✅ Updated FormGroup
   productForm: FormGroup = new FormGroup({
-    id: new FormControl('', Validators.compose([
+    id: new FormControl('', [
       Validators.required,
       (control: AbstractControl): { invalidId: boolean } | null => {
-        if (this.product().id != '') return null; // Skip check if readonly
-        let invalidId = this.existingIds().find(id => id == control.value) != undefined;
-        return invalidId ? { invalidId } : null;
+        const enteredId = control.value?.trim();
+        if (!enteredId) return null;
+
+        // Allow keeping same ID when editing
+        const currentId = this.product().id;
+        if (!this.isNewProduct() && enteredId === currentId) return null;
+
+        // Validate uniqueness against all existing IDs
+        const isDuplicate = this.existingIds().includes(enteredId);
+        return isDuplicate ? { invalidId: true } : null;
       }
-    ])),
+    ]),
     vendorId: new FormControl('', Validators.min(1)),
     name: new FormControl('', Validators.min(1)),
     cost: new FormControl(0, Validators.min(0)),

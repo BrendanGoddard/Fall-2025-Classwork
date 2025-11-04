@@ -7,9 +7,9 @@
 
       <!-- ID FIELD -->
       <div style="display:flex">
-        <mat-form-field ... >
+        <mat-form-field style="width:90%; margin:auto">
           <mat-label>ID</mat-label>
-          <input matInput type="text" required formControlName="id" [readonly]="product().id != ''"
+          <input matInput type="text" required formControlName="id" 
           />
           @if (productForm.get('id')?.hasError('required')) {
           <mat-error>ID is required</mat-error>
