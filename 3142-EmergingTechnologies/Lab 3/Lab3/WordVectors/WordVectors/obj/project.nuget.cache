@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "CnXILAf1fyw=",
+  "dgSpecHash": "qos6m0camso=",
   "success": true,
-  "projectFilePath": "C:\\Projects\\Fan\\0INFO3142\\Master\\Examples\\VS2022 Examples\\WordVectors\\WordVectors\\WordVectors.csproj",
+  "projectFilePath": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Lab 3\\Lab3\\WordVectors\\WordVectors\\WordVectors.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\jimco\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\8.0.1\\microsoft.dotnet.ilcompiler.8.0.1.nupkg.sha512",
-    "C:\\Users\\jimco\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.10\\microsoft.net.illink.tasks.9.0.10.nupkg.sha512",
-    "C:\\Users\\jimco\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\8.0.1\\runtime.win-x64.microsoft.dotnet.ilcompiler.8.0.1.nupkg.sha512"
+    "C:\\Users\\bjgod\\.nuget\\packages\\microsoft.dotnet.ilcompiler\\9.0.8\\microsoft.dotnet.ilcompiler.9.0.8.nupkg.sha512",
+    "C:\\Users\\bjgod\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.8\\microsoft.net.illink.tasks.9.0.8.nupkg.sha512",
+    "C:\\Users\\bjgod\\.nuget\\packages\\runtime.win-x64.microsoft.dotnet.ilcompiler\\9.0.8\\runtime.win-x64.microsoft.dotnet.ilcompiler.9.0.8.nupkg.sha512"
   ],
   "logs": []
 }

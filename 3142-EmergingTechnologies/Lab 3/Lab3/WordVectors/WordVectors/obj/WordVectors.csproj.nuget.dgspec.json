@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\Fan\\0INFO3142\\Master\\Examples\\VS2022 Examples\\WordVectors\\WordVectors\\WordVectors.csproj": {}
+    "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Lab 3\\Lab3\\WordVectors\\WordVectors\\WordVectors.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\Fan\\0INFO3142\\Master\\Examples\\VS2022 Examples\\WordVectors\\WordVectors\\WordVectors.csproj": {
+    "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Lab 3\\Lab3\\WordVectors\\WordVectors\\WordVectors.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\Fan\\0INFO3142\\Master\\Examples\\VS2022 Examples\\WordVectors\\WordVectors\\WordVectors.csproj",
+        "projectUniqueName": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Lab 3\\Lab3\\WordVectors\\WordVectors\\WordVectors.csproj",
         "projectName": "WordVectors",
-        "projectPath": "C:\\Projects\\Fan\\0INFO3142\\Master\\Examples\\VS2022 Examples\\WordVectors\\WordVectors\\WordVectors.csproj",
-        "packagesPath": "C:\\Users\\jimco\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Fan\\0INFO3142\\Master\\Examples\\VS2022 Examples\\WordVectors\\WordVectors\\obj\\",
+        "projectPath": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Lab 3\\Lab3\\WordVectors\\WordVectors\\WordVectors.csproj",
+        "packagesPath": "C:\\Users\\bjgod\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bjgod\\Desktop\\2025CourseFall\\Fall-2025-Classwork\\3142-EmergingTechnologies\\Lab 3\\Lab3\\WordVectors\\WordVectors\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jimco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bjgod\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -53,13 +54,13 @@
             "Microsoft.DotNet.ILCompiler": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.1, )",
+              "version": "[9.0.8, )",
               "autoReferenced": true
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.10, )",
+              "version": "[9.0.8, )",
               "autoReferenced": true
             }
           },
@@ -77,7 +78,7 @@
           "downloadDependencies": [
             {
               "name": "runtime.win-x64.Microsoft.DotNet.ILCompiler",
-              "version": "[8.0.1, 8.0.1]"
+              "version": "[9.0.8, 9.0.8]"
             }
           ],
           "frameworkReferences": {
@@ -85,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
