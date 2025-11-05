@@ -2,7 +2,6 @@
   <mat-card-content>
     @if (hasVendorSelected()) {
     <mat-card-title align="center" style="margin: 1rem">{{ newVendor() ? `New Vendor` : `Vendor Details` }}</mat-card-title>
-    <!-- <app-employee-details [employee]="employeeInDetail()" /> -->
     <app-vendor-details [vendor]="vendorInDetail()" (saved)="saveVendor($event)"(deleted)="deleteVendor($event)" (closed)="refresh()"/>
 
     } @else {

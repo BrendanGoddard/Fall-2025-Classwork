@@ -63,7 +63,6 @@ export class PurchaseOrderGenerator implements OnInit {
   onVendorSelectionChange(selection: MatSelectChange) {
   const vendorId = selection.value;
 
-  // Get all products once, filter in Angular
   this.purchaseOrderService.getAllProducts().subscribe({
     next: (products: any[]) => {
       const filtered = products.filter(p => p.vendorId === vendorId);
@@ -72,7 +71,6 @@ export class PurchaseOrderGenerator implements OnInit {
     error: err => console.error('Error loading products:', err)
   });
 
-  // Reset UI
   this.purchaseOrderForm.get('productId')?.setValue('');
   this.purchaseOrderForm.get('quantity')?.setValue(0);
   this.purchaseOrderTable.data = [];
@@ -147,33 +145,26 @@ private getFormattedDate(): string {
   this.vendorProducts.set([]);
   this.purchaseOrderTable.data = [];
 
-  // this.purchaseOrderCreatedMessage.set('');
 }
 
  updatePurchaseOrder() {
   const productId = this.purchaseOrderForm.get('productId')?.value;
   const quantity = Number(this.purchaseOrderForm.get('quantity')?.value);
 
-  if (!productId) return; // No product selected
-  if (quantity < 0) return; // Invalid quantity
+  if (!productId) return; 
+  if (quantity < 0) return; 
 
   const currentData = this.purchaseOrderTable.data;
 
-  // Check if product already exists in the table
   const existingIndex = currentData.findIndex(item => item.productId === productId);
 
   if (quantity === 0 && existingIndex !== -1) {
-    // Remove product if quantity is zero
     currentData.splice(existingIndex, 1);
   } else if (existingIndex !== -1) {
-    // Update existing quantity
     currentData[existingIndex].quantity = quantity;
   } else {
-    // Add new product
     currentData.push({ id: 0, poId: 0, productId, quantity });
   }
-
-  // Refresh the table data binding
   this.purchaseOrderTable.data = [...currentData];
 }
 
@@ -182,7 +173,7 @@ private getFormattedDate(): string {
   const po = {
     id: 0,
     vendorId: this.selectedVendorId(),
-    date: this.getFormattedDate(), // ✅ matches backend @JsonFormat
+    date: this.getFormattedDate(), 
     items: this.purchaseOrderTable.data.map(item => ({
       id: 0,
       poId: 0,

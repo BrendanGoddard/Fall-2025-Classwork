@@ -7,7 +7,6 @@ import { PurchaseOrderGenerator } from '@app/purchase-order/purchase-order-gener
 export const routes: Routes = [
   { path: '', component: Home, },
 
-  // TODO: Replace Home for EmployeeHome component once its created
   { path: 'vendors', component: VendorHome, },
   { path: 'products', component: ProductHome},
   { path: 'purchase-order', component: PurchaseOrderGenerator}

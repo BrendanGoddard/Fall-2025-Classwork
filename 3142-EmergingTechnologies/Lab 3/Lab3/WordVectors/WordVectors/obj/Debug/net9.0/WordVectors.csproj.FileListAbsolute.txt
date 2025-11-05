@@ -1,0 +1,28 @@
+C:\Projects\NLP_Dev\WordVectors\WordVectors\bin\Debug\net9.0\WordVectors.exe
+C:\Projects\NLP_Dev\WordVectors\WordVectors\bin\Debug\net9.0\WordVectors.deps.json
+C:\Projects\NLP_Dev\WordVectors\WordVectors\bin\Debug\net9.0\WordVectors.runtimeconfig.json
+C:\Projects\NLP_Dev\WordVectors\WordVectors\bin\Debug\net9.0\WordVectors.dll
+C:\Projects\NLP_Dev\WordVectors\WordVectors\bin\Debug\net9.0\WordVectors.pdb
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.AssemblyInfoInputs.cache
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.AssemblyInfo.cs
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.csproj.CoreCompileInputs.cache
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.dll
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Debug\net9.0\refint\WordVectors.dll
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.pdb
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.genruntimeconfig.cache
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Debug\net9.0\ref\WordVectors.dll
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\bin\Debug\net9.0\WordVectors.exe
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\bin\Debug\net9.0\WordVectors.deps.json
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\bin\Debug\net9.0\WordVectors.runtimeconfig.json
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\bin\Debug\net9.0\WordVectors.dll
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\bin\Debug\net9.0\WordVectors.pdb
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.AssemblyInfoInputs.cache
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.AssemblyInfo.cs
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.csproj.CoreCompileInputs.cache
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.dll
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\obj\Debug\net9.0\refint\WordVectors.dll
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.pdb
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\obj\Debug\net9.0\WordVectors.genruntimeconfig.cache
+C:\Projects\Fan\0INFO3142\Master\Examples\VS2022 Examples\WordVectors\WordVectors\obj\Debug\net9.0\ref\WordVectors.dll

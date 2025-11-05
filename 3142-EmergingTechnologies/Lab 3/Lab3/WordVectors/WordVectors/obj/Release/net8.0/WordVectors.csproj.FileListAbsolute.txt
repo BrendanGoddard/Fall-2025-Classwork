@@ -1,0 +1,14 @@
+C:\Projects\NLP_Dev\WordVectors\WordVectors\bin\Release\net8.0\WordVectors.exe
+C:\Projects\NLP_Dev\WordVectors\WordVectors\bin\Release\net8.0\WordVectors.deps.json
+C:\Projects\NLP_Dev\WordVectors\WordVectors\bin\Release\net8.0\WordVectors.runtimeconfig.json
+C:\Projects\NLP_Dev\WordVectors\WordVectors\bin\Release\net8.0\WordVectors.dll
+C:\Projects\NLP_Dev\WordVectors\WordVectors\bin\Release\net8.0\WordVectors.pdb
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Release\net8.0\WordVectors.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Release\net8.0\WordVectors.AssemblyInfoInputs.cache
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Release\net8.0\WordVectors.AssemblyInfo.cs
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Release\net8.0\WordVectors.csproj.CoreCompileInputs.cache
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Release\net8.0\WordVectors.dll
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Release\net8.0\refint\WordVectors.dll
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Release\net8.0\WordVectors.pdb
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Release\net8.0\WordVectors.genruntimeconfig.cache
+C:\Projects\NLP_Dev\WordVectors\WordVectors\obj\Release\net8.0\ref\WordVectors.dll
