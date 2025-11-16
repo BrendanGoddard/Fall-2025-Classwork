@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ollama Lab 4 – AI Console</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app fade-in">
+    <header class="glass panel slide-down">
+      <div class="title-block">
+        <h1>
+          Ollama AI Console
+        </h1>
+        <p>INFO3142 · Lab 4 — Local LLM Model Dashboard</p>
+      </div>
+
+      <div class="status flex">
+        <span class="dot"></span>
+        <span id="connectionStatus">Initializing…</span>
+      </div>
+    </header>
+
+    <main class="grid split">
+      <!-- LEFT SIDE -->
+      <aside class="glass sidebar panel slide-left">
+        <h2>Models</h2>
+
+        <label>Available Models</label>
+        <select id="modelSelect"></select>
+
+        <div class="panel glass model-section">
+          <h3>Model Info</h3>
+          <ul id="modelInfo"></ul>
+        </div>
+
+        <div class="panel glass model-section highlight">
+          <h3>Running Model</h3>
+          <span id="runningModel">Checking…</span>
+
+          <div class="btn-row">
+            <button id="refreshRunningBtn" class="mini-btn">Refresh</button>
+            <button id="reloadModelsBtn" class="mini-btn">Reload</button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT SIDE CHAT -->
+      <section class="glass panel chat slide-right">
+        <h2>Chat</h2>
+
+        <div id="messages" class="messages"></div>
+
+        <form id="chatForm" class="chat-input">
+          <textarea
+            id="prompt"
+            placeholder="Ask something… (Enter to send)"
+          ></textarea>
+
+          <div class="btn-col">
+            <button type="submit" class="primary">Send</button>
+            <button id="clearChat" type="button" class="secondary">Clear</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer fade-in">
+      <p>Ollama must be running on <code>127.0.0.1:11434</code> · CORS: <code>OLLAMA_ORIGINS=*</code></p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
