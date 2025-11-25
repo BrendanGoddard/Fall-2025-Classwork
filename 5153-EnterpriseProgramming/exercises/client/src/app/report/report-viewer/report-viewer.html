@@ -1,6 +1,7 @@
 <mat-card>
-  <mat-card-title align="center" style="margin: 1rem">Report Viewer</mat-card-title>
+  <mat-card-title style="text-align: center; margin: 1rem">Report Viewer</mat-card-title>
   <mat-card-content>
     <app-employee-dropdown (selected)="employeeSelected($event)" />
+    <app-report-dropdown [employeeId]="this.employeeId()" (selected)="reportSelected($event)" />
   </mat-card-content>
 </mat-card>

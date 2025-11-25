@@ -1,0 +1,22 @@
+<div style="display: flex; justify-content: center">
+  @if(reports().length > 0) {
+  <form [formGroup]="formGroup" style="width: 90%; margin: auto">
+    <mat-form-field style="width: 100%">
+      <mat-label>Report</mat-label>
+      <mat-select
+        placeholder="Report"
+        formControlName="report"
+        (selectionChange)="reportSelected($event)"
+      >
+        @for (report of reports(); track $index) {
+        <mat-option [value]="report">
+          {{ `[#${report.id}] ${report.date.substring(0, 10)}` }}
+        </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </form>
+  } @else {
+  <mat-card-title>No Reports</mat-card-title>
+  }
+</div>

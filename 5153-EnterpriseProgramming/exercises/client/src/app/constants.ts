@@ -15,3 +15,10 @@ export const EXPENSE_DEFAULT = {
   date: '',
   amount: 0
 };
+
+export const REPORT_DEFAULT = {
+  id: 0,
+  employeeId: 0,
+  items: [],
+  date: ''
+};
