@@ -1,0 +1,17 @@
+<div style="display: flex">
+  <mat-form-field style="width: 90%; margin: auto">
+    <mat-label>Employee</mat-label>
+    <mat-select
+      required
+      placeholder="Employee"
+      formControlName="employee"
+      (selectionChange)="onEmployeeSelectionChange($event)"
+    >
+      @for (employee of employees(); track $index) {
+      <mat-option [value]="employee">
+        {{ `${employee.firstName} ${employee.lastName}` }}
+      </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>

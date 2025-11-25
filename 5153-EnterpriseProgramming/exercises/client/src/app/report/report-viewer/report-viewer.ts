@@ -1,48 +1,34 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatOptionModule } from '@angular/material/core';
-import { MatSelectChange, MatSelectModule } from '@angular/material/select';
-import { MatLabel, MatFormField } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 
 import { Employee } from '@app/employee/employee';
-import { EmployeeService } from '@app/employee/employee.service';
+import { EmployeeDropdown } from '@app/employee/employee-dropdown/employee-dropdown';
 
 import { Report } from '@app/report/report';
 import { ReportService } from '@app/report/report-service';
 
 @Component({
   selector: 'app-report-viewer',
-  imports: [ReactiveFormsModule, MatCardModule, MatLabel, MatFormField, MatSelectModule, MatOptionModule],
+  imports: [ReactiveFormsModule, MatCardModule, MatSelectModule, MatOptionModule, EmployeeDropdown],
   templateUrl: './report-viewer.html',
   styleUrl: './report-viewer.scss'
 })
-export class ReportViewer implements OnInit {
+export class ReportViewer {
 
-  constructor(protected employeeService: EmployeeService, protected reportService: ReportService) {
+  constructor(protected reportService: ReportService) {
   }
-
-  employees = signal<Employee[]>([]);
 
   viewerForm: FormGroup = new FormGroup({
     employeeId: new FormControl(),
   });
 
-  ngOnInit(): void {
-    this.loadEmployees();
-  }
-
-  loadEmployees() {
-    this.employeeService.getAll().subscribe({
-      next: (payload: Employee[]) => this.employees.set(payload),
-      error: e => console.log(e)
-    });
-  }
-
-  onEmployeeSelectionChange(selection: MatSelectChange) {
-    this.reportService.getAllById(selection.value).subscribe({
+  employeeSelected(employee: Employee) {
+      this.reportService.getAllById(employee.id).subscribe({
       next: (payload: Report[]) => console.log(payload),
       error: e => console.log(e),
     });
