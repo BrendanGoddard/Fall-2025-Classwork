@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-title align="center" style="margin: 1rem">Report Viewer</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="viewerForm" novalidate>
+      <div style="display: flex">
+        <mat-form-field style="width: 90%; margin: auto">
+          <mat-label>Employee</mat-label>
+          <mat-select
+            required
+            placeholder="Employee"
+            formControlName="employeeId"
+            (selectionChange)="onEmployeeSelectionChange($event)"
+          >
+            @for (employee of employees(); track $index) {
+            <mat-option [value]="employee.id">
+              {{ `${employee.firstName} ${employee.lastName}` }}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
