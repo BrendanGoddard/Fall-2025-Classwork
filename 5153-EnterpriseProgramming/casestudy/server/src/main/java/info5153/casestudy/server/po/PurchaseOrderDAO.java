@@ -108,4 +108,19 @@ public class PurchaseOrderDAO {
 
         return deleted;
     }
+
+    public List<PurchaseOrder> findByVendorId(long vendorId) {
+    String jpql = "SELECT p FROM PurchaseOrder p WHERE p.vendorId = :vendorId";
+    return entityManager.createQuery(jpql, PurchaseOrder.class)
+            .setParameter("vendorId", vendorId)
+            .getResultList();
+}
+
+public List<PurchaseOrderLineItem> findItemsByPoId(long poId) {
+    String jpql = "SELECT i FROM PurchaseOrderLineItem i WHERE i.poId = :poId";
+    return entityManager.createQuery(jpql, PurchaseOrderLineItem.class)
+            .setParameter("poId", poId)
+            .getResultList();
+}
+
 }

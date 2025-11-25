@@ -1,0 +1,16 @@
+<form [formGroup]="formGroup" style="width: 100%">
+  <mat-form-field style="width: 100%">
+    <mat-label>Vendor</mat-label>
+
+    <mat-select
+      formControlName="vendor"
+      (valueChange)="vendorSelected($event)"
+    >
+      @for (vendor of vendors(); track vendor.id) {
+        <mat-option [value]="vendor.id">
+          {{ vendor.name }}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</form>

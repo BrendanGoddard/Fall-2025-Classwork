@@ -1,0 +1,23 @@
+<div style="display: flex; justify-content: center">
+  @if (purchaseOrders().length > 0) {
+    <form [formGroup]="formGroup" style="width: 90%; margin: auto">
+      <mat-form-field style="width: 100%">
+        <mat-label>Purchase Order</mat-label>
+
+        <mat-select
+          placeholder="Purchase Order"
+          formControlName="purchaseOrder"
+          (selectionChange)="selectedOrder($event)"
+        >
+          @for (order of purchaseOrders(); track $index) {
+            <mat-option [value]="order">
+              {{ `[#${order.id}] ${order.date.substring(0, 10)}` }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </form>
+  } @else {
+    <mat-card-title>No Purchase Orders</mat-card-title>
+  }
+</div>

@@ -1,0 +1,83 @@
+<table mat-table [dataSource]="tableSource">
+
+  <!-- HEADER ROW -->
+  <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+
+  <!-- DATA ROW -->
+  <tr mat-row *matRowDef="let item; columns: columns"></tr>
+
+  <!-- FOOTER ROW -->
+  <tr mat-footer-row *matFooterRowDef="columns"></tr>
+
+
+  <!-- PRODUCT ID COLUMN -->
+  <ng-container matColumnDef="productId">
+    <th mat-header-cell *matHeaderCellDef>
+      <div align="center">Product</div>
+    </th>
+
+    <td mat-cell *matCellDef="let item">
+      <div align="center">{{ item.productId }}</div>
+    </td>
+
+    <td mat-footer-cell *matFooterCellDef>
+      <div align="right">Subtotal</div>
+      <div align="right">Tax</div>
+      <div align="right"><strong>Total</strong></div>
+    </td>
+  </ng-container>
+
+
+
+  <!-- QUANTITY COLUMN -->
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef>
+      <div align="center">Quantity</div>
+    </th>
+
+    <td mat-cell *matCellDef="let item">
+      <div align="center">{{ item.quantity }}</div>
+    </td>
+
+    <td mat-footer-cell *matFooterCellDef>
+      <div align="right">{{ subtotal() | currency:'$' }}</div>
+      <div align="right">{{ tax() | currency:'$' }}</div>
+      <div align="right"><strong>{{ total() | currency:'$' }}</strong></div>
+    </td>
+  </ng-container>
+
+
+
+  <!-- UNIT COST COLUMN -->
+  <ng-container matColumnDef="unitCost">
+    <th mat-header-cell *matHeaderCellDef>
+      <div align="center">Unit Cost</div>
+    </th>
+
+    <td mat-cell *matCellDef="let item">
+      <div align="right">
+        {{ costOfProduct(item.productId) | currency:'$' }}
+      </div>
+    </td>
+
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+
+
+
+  <!-- EXTENDED COLUMN -->
+  <ng-container matColumnDef="extended">
+    <th mat-header-cell *matHeaderCellDef>
+      <div align="center">Extended</div>
+    </th>
+
+    <td mat-cell *matCellDef="let item">
+      <div align="right">
+        {{ extended(item) | currency:'$' }}
+      </div>
+    </td>
+
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+
+</table>

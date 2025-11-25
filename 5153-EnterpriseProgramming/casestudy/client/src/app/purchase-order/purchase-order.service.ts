@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HttpApiService } from '@app/http-api.service';
 import { PurchaseOrder } from './purchase-order';
+import { PurchaseOrderLineItem } from './purchase-order-line-item';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,20 @@ export class PurchaseOrderService extends HttpApiService<PurchaseOrder> {
   getAllProducts(): Observable<any[]> {
   return this.http.get<any[]>(`${this.apiURL()}/products`);
 }
+
+    getAllById(vendorId: number): Observable<PurchaseOrder[]> {
+      return this.http.get<PurchaseOrder[]>(`${this.apiURL()}/po/${vendorId}`);
+    }
+
+
+  getPurchaseOrdersForVendor(vendorId: number): Observable<PurchaseOrder[]> {
+  return this.http.get<PurchaseOrder[]>(`${this.apiURL()}/po/vendor/${vendorId}`);
+}
+
+getPurchaseOrderItems(poId: number): Observable<PurchaseOrderLineItem[]> {
+  return this.http.get<PurchaseOrderLineItem[]>(`${this.apiURL()}/po/${poId}/items`);
+}
+
+
 
 }

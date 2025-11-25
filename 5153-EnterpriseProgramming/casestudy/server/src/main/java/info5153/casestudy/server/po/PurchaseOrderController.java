@@ -23,6 +23,14 @@ public class PurchaseOrderController {
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
+    @GetMapping("/vendor/{vendorId}")
+public ResponseEntity<List<PurchaseOrder>> findByVendor(@PathVariable long vendorId) {
+    List<PurchaseOrder> orders = poDAO.findByVendorId(vendorId);
+    return new ResponseEntity<>(orders, HttpStatus.OK);
+}
+
+
+
     @GetMapping("/{id}")
     public ResponseEntity<PurchaseOrder> findById(@PathVariable long id) {
         PurchaseOrder po = poDAO.findById(id);
@@ -48,5 +56,11 @@ public class PurchaseOrderController {
         poDAO.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/{id}/items")
+public ResponseEntity<List<PurchaseOrderLineItem>> getItems(@PathVariable long id) {
+    List<PurchaseOrderLineItem> items = poDAO.findItemsByPoId(id);
+    return new ResponseEntity<>(items, HttpStatus.OK);
+}
 
 }
