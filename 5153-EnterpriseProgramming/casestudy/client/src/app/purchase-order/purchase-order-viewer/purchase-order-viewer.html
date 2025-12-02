@@ -1,33 +1,91 @@
 <mat-card>
-  <mat-card-title style="text-align: center; margin: 1rem">
+  <mat-card-title align="center" style="margin:1rem">
     Purchase Order Viewer
   </mat-card-title>
 
   <mat-card-content>
-    <!-- Vendor selector -->
-    <app-vendor-dropdown (selected)="vendorSelected($event)"></app-vendor-dropdown>
+    <form [formGroup]="form" novalidate>
+      <div style="display:flex">
+        <mat-form-field style="width:90%; margin:auto">
+          <mat-label>Vendor</mat-label>
+          <mat-select
+            required
+            placeholder="Vendor"
+            formControlName="vendorId"
+            (selectionChange)="onVendorChange($event)"
+          >
+            @for (v of vendors(); track $index) {
+            <mat-option [value]="v.id">{{ v.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
 
+      <div style="display:flex; margin-top:1rem">
+        <mat-form-field style="width:90%; margin:auto">
+          <mat-label>Purchase Order</mat-label>
+          <mat-select
+            required
+            placeholder="Purchase Order"
+            formControlName="purchaseOrderId"
+            (selectionChange)="onPurchaseOrderChange($event)"
+          >
+            @for (po of purchaseOrders(); track $index) {
+            <mat-option [value]="po.id">
+              {{ `[#${po.id}] ${po.date.substring(0, 10)}` }}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
 
-    <!-- Purchase Order selector -->
-    <app-purchase-order-dropdown
-      [vendorId]="vendorId()"
-      (selected)="purchaseOrderSelected($event)"
-    />
+    @if (selectedPurchaseOrder().id > 0 && lineItemsForOrder().length > 0) {
+    <mat-card-title align="center" style="margin:1rem">
+      Purchase Order #{{ selectedPurchaseOrder().id }}
+    </mat-card-title>
+    <mat-card-content align="center" style="margin:1rem">
+      {{ selectedPurchaseOrder().date.substring(0, 10) }}
+    </mat-card-content>
 
-    @if (purchaseOrder().id > 0) {
-      <mat-card-title style="text-align: center; margin: 1rem">
-        Purchase Order # {{ purchaseOrder().id }}
-      </mat-card-title>
+    <app-purchase-order-table
+      [purchaseOrderProducts]="productsForVendor()"
+      [purchaseOrderLineItems]="lineItemsForOrder()"
+    ></app-purchase-order-table>
 
-      <mat-card-content style="text-align: center; margin: 1rem">
-        {{ purchaseOrder().date.substring(0, 10) }}
-      </mat-card-content>
-    }
+    <!-- Totals (match the generator math) -->
+    <div
+      style="
+        display:flex;
+        flex-direction:column;
+        align-items:flex-end;
+        margin:1rem 2rem 0 0;
+        gap:4px;
+      "
+    >
+      <div>Subtotal {{ subTotal() | currency : '$' }}</div>
+      <div>Tax {{ tax() | currency : '$' }}</div>
+      <div><strong>Total {{ total() | currency : '$' }}</strong></div>
+    </div>
 
-    @if (orderItems().length > 0) {
-      <app-purchase-order-table
-        [items]="orderItems()">
-      </app-purchase-order-table>
+    <!-- View PDF button -->
+    <div
+      style="
+        display:flex;
+        justify-content:center;
+        margin-top:1rem;
+        margin-bottom:0.5rem;
+      "
+    >
+      <button
+        mat-raised-button
+        type="button"
+        style="color:green"
+        (click)="viewPDF()"
+      >
+        View PDF
+      </button>
+    </div>
     }
   </mat-card-content>
 </mat-card>

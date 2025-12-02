@@ -21,6 +21,8 @@ export class HttpApiService<T> {
     return this.http.get<T>(`${this.apiURL()}/${this.endPoint}/${id}`);
   }
 
+  
+
   create(data: T): Observable<T> {
     return this.http.post<T>(`${this.apiURL()}/${this.endPoint}`, data);
   }
@@ -33,6 +35,10 @@ export class HttpApiService<T> {
     return this.http.delete<number>(`${this.apiURL()}/${this.endPoint}/${id}`);
   }
 
-  
+  getByVendorId(vendorId: number): Observable<T[]> {
+    return this.http.get<T[]>(
+      `${this.apiURL()}/${this.endPoint}/vendor/${vendorId}`
+    );
+  }
 
 }

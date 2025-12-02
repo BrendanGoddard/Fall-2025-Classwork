@@ -7,38 +7,45 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-
 @CrossOrigin
 @RestController
 public class ProductController {
-    
+
     @Autowired
     private ProductRepository productRepository;
 
+    // ---------- GET ALL ----------
     @GetMapping("/api/products")
     public ResponseEntity<Iterable<Product>> findAll() {
         Iterable<Product> products = productRepository.findAll();
-        return new ResponseEntity<Iterable<Product>>(products, HttpStatus.OK);
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
+    // ---------- GET BY VENDOR ----------
+    @GetMapping("/api/products/vendor/{vendorId}")
+    public ResponseEntity<List<Product>> getByVendorId(@PathVariable long vendorId) {
+        List<Product> products = productRepository.findByVendorId(vendorId);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+    // ---------- CREATE ----------
+    @PostMapping("/api/products")
+    public ResponseEntity<Product> createOne(@RequestBody Product product) {
+        Product newProduct = productRepository.save(product);
+        return new ResponseEntity<>(newProduct, HttpStatus.OK);
+    }
+
+    // ---------- UPDATE ----------
     @PutMapping("/api/products")
     public ResponseEntity<Product> updateOne(@RequestBody Product product) {
-        Product updatedproduct = productRepository.save(product);
-        return new ResponseEntity<Product>(updatedproduct, HttpStatus.OK);
+        Product updatedProduct = productRepository.save(product);
+        return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
     }
-    
+
+    // ---------- DELETE ----------
     @DeleteMapping("/api/products/{id}")
     public ResponseEntity<Integer> deleteOne(@PathVariable String id) {
         int deletedCount = productRepository.deleteOne(id);
-        return new ResponseEntity<Integer>(deletedCount, HttpStatus.OK);
+        return new ResponseEntity<>(deletedCount, HttpStatus.OK);
     }
-
-    @PostMapping("/api/products")
-    public ResponseEntity<Product> createOne(@RequestBody Product product) {
-        Product newproduct = productRepository.save(product);
-        return new ResponseEntity<Product>(newproduct, HttpStatus.OK);
-    }
-
 }
-

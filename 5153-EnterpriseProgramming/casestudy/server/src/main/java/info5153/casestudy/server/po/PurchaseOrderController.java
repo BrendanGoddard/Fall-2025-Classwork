@@ -1,12 +1,22 @@
 package info5153.casestudy.server.po;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import info5153.casestudy.server.product.Product;
 
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+
+import info5153.casestudy.server.po.PurchaseOrderRepository;
+import info5153.casestudy.server.product.ProductRepository;
+import info5153.casestudy.server.vendor.VendorRepository;
+
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 @CrossOrigin
@@ -16,6 +26,15 @@ public class PurchaseOrderController {
 
     @Autowired
     private PurchaseOrderDAO poDAO;
+
+    @Autowired
+    private PurchaseOrderRepository purchaseOrderRepository;
+
+    @Autowired
+    private VendorRepository vendorRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @GetMapping
     public ResponseEntity<List<PurchaseOrder>> findAll() {
@@ -62,5 +81,18 @@ public ResponseEntity<List<PurchaseOrderLineItem>> getItems(@PathVariable long i
     List<PurchaseOrderLineItem> items = poDAO.findItemsByPoId(id);
     return new ResponseEntity<>(items, HttpStatus.OK);
 }
+
+@GetMapping(value = "/pdf/{id}", produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> reportPDF(@PathVariable Long id) {
+
+        ByteArrayInputStream bis = PDFGenerator.generatePurchaseOrder(id.toString(), vendorRepository,
+                productRepository, purchaseOrderRepository);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=report_" + id.toString() + ".pdf");
+
+        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(bis));
+    }
 
 }

@@ -14,10 +14,11 @@ import { Expense } from '@app/expense/expense';
 import { ExpenseService } from '@app/expense/expense.service';
 
 import { ReportTable } from '../report-table/report-table';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-report-viewer',
-  imports: [MatCardModule, EmployeeDropdown, ReportDropdown, ReportTable],
+  imports: [MatCardModule, EmployeeDropdown, ReportDropdown, ReportTable, MatButtonModule],
   templateUrl: './report-viewer.html',
   styleUrl: './report-viewer.scss'
 })
@@ -60,5 +61,9 @@ export class ReportViewer {
         this.expensesForReport().push(expense);
       }
     });
+  }
+
+  viewPDF() {
+    window.open(`${this.expenseService.apiURL()}/reports/pdf/${this.report().id}`);
   }
 }

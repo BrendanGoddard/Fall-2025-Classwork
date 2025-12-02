@@ -14,8 +14,6 @@ export class PurchaseOrderService extends HttpApiService<PurchaseOrder> {
     super(http, 'po');
   }
 
-  
-
   post(po: PurchaseOrder): Observable<PurchaseOrder> {
     return this.http.post<PurchaseOrder>(`${this.apiURL()}/po`, po);
   }
@@ -26,19 +24,21 @@ export class PurchaseOrderService extends HttpApiService<PurchaseOrder> {
 
   getAllProducts(): Observable<any[]> {
   return this.http.get<any[]>(`${this.apiURL()}/products`);
-}
-
-    getAllById(vendorId: number): Observable<PurchaseOrder[]> {
-      return this.http.get<PurchaseOrder[]>(`${this.apiURL()}/po/${vendorId}`);
-    }
-
-
+}  
   getPurchaseOrdersForVendor(vendorId: number): Observable<PurchaseOrder[]> {
   return this.http.get<PurchaseOrder[]>(`${this.apiURL()}/po/vendor/${vendorId}`);
 }
 
 getPurchaseOrderItems(poId: number): Observable<PurchaseOrderLineItem[]> {
   return this.http.get<PurchaseOrderLineItem[]>(`${this.apiURL()}/po/${poId}/items`);
+}
+
+getAllByVendorId(vendorId: number): Observable<PurchaseOrder[]> {
+  return this.http.get<PurchaseOrder[]>(`${this.apiURL()}/po/vendor/${vendorId}`);
+}
+
+  override getById(id: number): Observable<PurchaseOrder> {
+  return this.http.get<PurchaseOrder>(`${this.apiURL()}/po/${id}`);
 }
 
 

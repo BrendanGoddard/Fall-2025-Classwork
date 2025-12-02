@@ -34,6 +34,8 @@ export class ReportGenerator implements OnInit {
     protected reportService: ReportService
   ) {}
 
+  reportCreatedId = signal<number>(0);
+
   tableColumns = ['date', 'description', 'amount'];
   reportTable = new MatTableDataSource<Expense>();
 
@@ -132,8 +134,14 @@ export class ReportGenerator implements OnInit {
         this.employeeExpenses.set([]);
         
         this.reportCreatedMessage.set(`Report #${payload.id} created at ${payload.date}`);
+        this.reportCreatedId.set(payload.id);
       },
       error: e => console.log(e)
     });
   }
+
+  viewPDF() {
+    window.open(`${this.reportService.apiURL()}/reports/pdf/${this.reportCreatedId()}`);
+  }
+
 }

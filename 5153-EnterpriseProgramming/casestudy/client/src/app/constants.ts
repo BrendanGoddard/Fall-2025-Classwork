@@ -21,3 +21,10 @@ export const PRODUCT_DEFAULT = {
     qoh: 0,
     qoo: 0
 };
+
+export const PURCHASE_ORDER_DEFAULT = {
+    id: 0,
+    vendorId: 0,
+    date: '',
+    items: []
+};

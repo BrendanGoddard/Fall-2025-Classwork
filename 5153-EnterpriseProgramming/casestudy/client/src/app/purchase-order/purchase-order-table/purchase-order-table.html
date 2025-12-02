@@ -1,0 +1,21 @@
+<table class="po-table">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Extended</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (row of rows(); track $index) {
+      <tr>
+        <td>{{ row.name }}</td>
+        <td>{{ row.quantity }}</td>
+        <td>{{ row.price | currency:'$' }}</td>
+        <td>{{ row.extended | currency:'$' }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
