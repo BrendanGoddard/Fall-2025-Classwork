@@ -10,6 +10,12 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.net.URL;
+
+import info5153.casestudy.server.qr.QRCodeGenerator;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.properties.HorizontalAlignment;
 
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
@@ -52,6 +58,9 @@ public abstract class PDFGenerator extends AbstractPdfView {
             NumberFormat currency = NumberFormat.getCurrencyInstance(locale);
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
+            URL imageUrl = PDFGenerator.class.getResource("/static/images/logo-bg.png");
+            Image img = new Image(ImageDataFactory.create(imageUrl)).setMaxHeight(64).setHorizontalAlignment(HorizontalAlignment.CENTER);
+            document.add(img);
             // Title
             document.add(
                 new Paragraph("Purchase Order ID #" + id)
@@ -109,6 +118,9 @@ public abstract class PDFGenerator extends AbstractPdfView {
 
             String poDate = "";
 
+            
+            String summary = "PO ID #" + id + "\n";
+
             Optional<PurchaseOrder> nullablePo = purchaseOrderRepository.findById(Long.parseLong(id));
             if (nullablePo.isPresent()) {
                 PurchaseOrder po = nullablePo.get();
@@ -127,6 +139,7 @@ public abstract class PDFGenerator extends AbstractPdfView {
                             .setTextAlignment(TextAlignment.CENTER)
                             .simulateBold()
                     );
+                     summary += vendorInfo + "\n";
                 }
 
                 // === MONEY CALCULATIONS ===
@@ -188,6 +201,9 @@ public abstract class PDFGenerator extends AbstractPdfView {
                                 .setFontSize(12)
                         ).setTextAlignment(TextAlignment.RIGHT);
                     table.addCell(cell);
+
+                    summary += currency.format(lineTotal) + "\n" + poDate;
+
                 }
 
                 // Tax and Total (13% HST)
@@ -248,6 +264,8 @@ public abstract class PDFGenerator extends AbstractPdfView {
                     .setTextAlignment(TextAlignment.RIGHT)
                     .setBackgroundColor(ColorConstants.YELLOW);
                 table.addCell(cell);
+             
+
             }
 
             document.add(new Paragraph("\n"));
@@ -260,6 +278,9 @@ public abstract class PDFGenerator extends AbstractPdfView {
                         .setTextAlignment(TextAlignment.CENTER)
                 );
             }
+
+            Image qrCode = new Image(ImageDataFactory.create(QRCodeGenerator.generateQRCode(summary))).scaleAbsolute(128, 128).setHorizontalAlignment(HorizontalAlignment.CENTER);
+            document.add(qrCode);
 
             document.close();
 

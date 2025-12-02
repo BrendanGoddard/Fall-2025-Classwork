@@ -82,7 +82,7 @@ public ResponseEntity<List<PurchaseOrderLineItem>> getItems(@PathVariable long i
     return new ResponseEntity<>(items, HttpStatus.OK);
 }
 
-@GetMapping(value = "/pdf/{id}", produces = MediaType.APPLICATION_PDF_VALUE)
+@GetMapping(value = "/api/po/pdf/{id}", produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<InputStreamResource> reportPDF(@PathVariable Long id) {
 
         ByteArrayInputStream bis = PDFGenerator.generatePurchaseOrder(id.toString(), vendorRepository,
