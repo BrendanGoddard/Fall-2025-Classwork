@@ -5,6 +5,12 @@ import info5153.exercises.server.employee.EmployeeRepository;
 import info5153.exercises.server.expense.Expense;
 import info5153.exercises.server.expense.ExpenseRepository;
 
+import info5153.exercises.server.qr.QRCodeGenerator;
+import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.properties.HorizontalAlignment;
+
+import java.net.URL;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
@@ -53,7 +59,12 @@ public abstract class PDFGenerator extends AbstractPdfView {
             Locale locale = Locale.of("en", "US");
             NumberFormat numberFormatter = NumberFormat.getCurrencyInstance(locale);
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        
+            URL imageUrl = PDFGenerator.class.getResource("/static/images/logo.png");
+            Image img = new Image(ImageDataFactory.create(imageUrl)).setMaxHeight(64).setHorizontalAlignment(HorizontalAlignment.CENTER);
+            document.add(img);
 
+            
             document.add(new Paragraph(String.format("Report ID #" + id)).setFont(font).setFontSize(12)
                     .setTextAlignment(TextAlignment.CENTER).simulateBold());
 
@@ -77,6 +88,7 @@ public abstract class PDFGenerator extends AbstractPdfView {
 
             // To store the date when the Report was generated
             String reportDate = "";
+            String summary = "Report ID #" + id + "\n";
 
             // Table Data
             Optional<Report> nullableReport = reportRepository.findById(Long.parseLong(id));
@@ -92,6 +104,7 @@ public abstract class PDFGenerator extends AbstractPdfView {
                     Employee employee = nullableEmployee.get();
                     String employeeInfo = "Employee: " + employee.getFirstName() + " " + employee.getLastName() + " ("
                             + employee.getEmail() + ")";
+                    summary += employeeInfo + "\n";
 
                     document.add(new Paragraph(employeeInfo).setFont(font).setFontSize(12)
                             .setTextAlignment(TextAlignment.CENTER).simulateBold());
@@ -132,6 +145,9 @@ public abstract class PDFGenerator extends AbstractPdfView {
                     table.addCell(cell);
                 }
 
+                summary += numberFormatter.format(totalExpense) + "\n" + reportDate;
+
+
                 cell = new Cell(1, 3).add(new Paragraph("Total:").setFont(font).setFontSize(12).simulateBold()
                         .setTextAlignment(TextAlignment.RIGHT));
                 table.addCell(cell);
@@ -146,6 +162,8 @@ public abstract class PDFGenerator extends AbstractPdfView {
 
             document.add(new Paragraph("\n"));
             document.add(new Paragraph(reportDate).setTextAlignment(TextAlignment.CENTER));
+            Image qrCode = new Image(ImageDataFactory.create(QRCodeGenerator.generateQRCode(summary))).scaleAbsolute(128, 128).setHorizontalAlignment(HorizontalAlignment.CENTER);
+            document.add(qrCode);
             document.close();
 
         } catch (Exception ex) {
